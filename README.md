@@ -1,4 +1,4 @@
-# SuperNova template
+# VideoNova template
 
 `npm install` - встановити залежності
 
