@@ -1,8 +1,19 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .layout__header {
-    margin-bottom: 30px;
+  padding: 33px 50px 0;
+  margin-bottom: 30px;
 }
+
 .layout__content {
-    display: flex;
-    justify-content: center;
-    font-size: 16px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
 }
+
+.layout__footer {}
