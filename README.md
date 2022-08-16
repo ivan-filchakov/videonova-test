@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# VideoNova template
+
+`npm install` - встановити залежності
+
+`npm start` - запустити реакт
+
+`npm run storybook` - запустити СБ 
+
+В шаблоні на базовому рівні реалізовано:
+- React Router
+- Store (Redux)
+- підключені шрифти 'Chillax' та 'Plus Jakarta Display'
+- Storybook
+- Eslint
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

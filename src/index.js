@@ -2,7 +2,7 @@ import React from "react"
 import { createRoot } from "react-dom/client"
 import App from "./app"
 import StyleLoader from "./styleLoader"
-import reportWebVitals from "./reportWebVitals"
+import reportWebVitals from "./reportWebVitals" // eslint-disable-line
 
 const app = createRoot(document.getElementById("root"))
 app.render(
