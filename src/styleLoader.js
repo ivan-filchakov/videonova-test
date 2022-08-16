@@ -11,12 +11,12 @@ function StyleLoader() {
   useEffect(() => {
     const Fonts = [
       // main fonts
-      new FontFaceObserver("Plus Jakarta Display", {}).load(),
-      new FontFaceObserver("Plus Jakarta Display", { weight: 500 }).load(),
-      new FontFaceObserver("Plus Jakarta Display", { weight: 700 }),
+      new FontFaceObserver("Plus-Jakarta-Display", {}).load(),
+      new FontFaceObserver("Plus-Jakarta-Display", { weight: 500 }).load(),
+      new FontFaceObserver("Plus-Jakarta-Display", { weight: 700 }).load(),
 
       // font for headings
-      new FontFaceObserver("Chillax", { weight: 600 }),
+      new FontFaceObserver("Chillax", { weight: 600 }).load(),
     ]
 
     // When Font is loaded, add a font-family using Open Sans to the body
