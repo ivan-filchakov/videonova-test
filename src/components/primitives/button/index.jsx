@@ -5,25 +5,21 @@ import AdaptiveLink from "../adaptiveLink"
 import ButtonLoader from "./buttonLoader"
 
 function Button({ label, onClick, variant, disabled, loading }) {
+  const enableClick = disabled ? undefined : onClick
+  const showLoader = loading && ["main", "transparent"].includes(variant)
+
   const getStyles = () => {
     const styles = ["button"]
     styles.push(`button_${variant}`)
     if (disabled) styles.push("button_disabled")
-    if (loading) styles.push("button_loading")
+    if (showLoader) styles.push("button_loading")
     return styles.join(" ")
   }
 
-  const enableClick = disabled ? undefined : onClick
-  const showLoadingIcon = loading && ["main", "transparent"].includes(variant)
-
   return (
     <AdaptiveLink className={getStyles()} action={enableClick}>
-      <div className="button__label">
-        {label}
-        {showLoadingIcon && (
-          <ButtonLoader variant={variant} disabled={disabled} />
-        )}
-      </div>
+      <div className="button__label">{label}</div>
+      {showLoader && <ButtonLoader variant={variant} disabled={disabled} />}
     </AdaptiveLink>
   )
 }

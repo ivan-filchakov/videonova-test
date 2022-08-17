@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 function ButtonLoader({ variant, disabled }) {
-  function iconStyle(el) {
+  const loaderStyle = (el) => {
     if (el === "main") {
       return {
         border: "3px solid rgba(255, 255, 255, 1)",
@@ -26,7 +26,9 @@ function ButtonLoader({ variant, disabled }) {
     return null
   }
 
-  return <div className="button__loader" style={iconStyle(variant, disabled)} />
+  return (
+    <div className="button__loader" style={loaderStyle(variant, disabled)} />
+  )
 }
 
 export default ButtonLoader

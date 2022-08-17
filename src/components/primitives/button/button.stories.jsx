@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {useState} from "react"
+import React, { useState } from "react"
 import Button from "./index"
 
 export default {
@@ -9,13 +9,9 @@ export default {
     label: "Button",
     onClick: "",
     variant: {
-      options: [
-        "main",
-        "transparent",
-        "link",
-      ],
-      control: { type: "radio" }
-    }
+      options: ["main", "transparent", "link"],
+      control: { type: "radio" },
+    },
   },
 }
 
