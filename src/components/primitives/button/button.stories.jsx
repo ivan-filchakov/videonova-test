@@ -57,11 +57,11 @@ Disabled.args = {
 }
 
 export function Loading(args) {
-  const [state, setState] = useState(false)
-  const toggle = () => setState(!state)
-  return <Button {...args} loading={state} onClick={toggle} />
+  return <Button {...args} />
 }
 Loading.args = {
-  label: "Click for loading",
+  label: "Loading",
   variant: "main",
+  onClick: "http://google.com",
+  loading: true,
 }

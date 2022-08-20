@@ -26,10 +26,25 @@ function Button({ label, onClick, variant, disabled, loading }) {
 
 export default Button
 Button.propTypes = {
+  /**
+   * Button label
+   */
   label: PropTypes.string.isRequired,
+  /**
+   * Action when button is beign clicked. Can be function or a link (string)
+   */
   onClick: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  /**
+   * Variants of Button appearance
+   */
   variant: PropTypes.oneOf(["main", "transparent", "link"]).isRequired,
+  /**
+   * Disables button onClick interaction
+   */
   disabled: PropTypes.bool,
+  /**
+   * Indicates loading process by showing loader icon
+   */
   loading: PropTypes.bool,
 }
 Button.defaultProps = {

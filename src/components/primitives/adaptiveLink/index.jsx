@@ -41,10 +41,17 @@ function AdaptiveLink({ children, action, ...props }) {
 
 export default AdaptiveLink
 AdaptiveLink.propTypes = {
+  /**
+   * Content to put inside block.
+   * Could be any react node
+   */
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  /**
+   * Action when link is beign clicked. Can be function or a link (string)
+   */
   action: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 }
 AdaptiveLink.defaultProps = {

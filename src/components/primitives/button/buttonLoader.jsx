@@ -33,6 +33,12 @@ function ButtonLoader({ variant, disabled }) {
 
 export default ButtonLoader
 ButtonLoader.propTypes = {
+  /**
+   * Variants of Button Loader appearance
+   */
   variant: PropTypes.string.isRequired,
+  /**
+   * Additional Button Loader appearence based on button disabled status
+   */
   disabled: PropTypes.bool.isRequired,
 }
