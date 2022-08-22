@@ -1,22 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
 import headingHighlight from "./headingHighlight"
+import "./style.css"
 
-// function HeadingHighlight({ children }) {
-//   return (
-//     <span style={{color:"red"}}> {children} </span>
-//   )
-// }
-
-function Heading({ h, children, accent }) {
+function Heading({ h, children, color, accent, accentColor }) {
   const headingClass = `heading heading_h${h}`
   const TagH = `h${h}`
 
-  const highlight = (accent && typeof children === "string")
-  const content = highlight ? headingHighlight(children, accent) : children
+  const highlighted = (accent && typeof children === "string")
+  const content = highlighted ? headingHighlight(children, accent, accentColor) : children
 
   return (
-    <TagH className={headingClass}>
+    <TagH className={headingClass} style={{ color: color }}>
       {content}
     </TagH>
   )
@@ -37,11 +32,21 @@ Heading.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
   /**
+   * Heading text color
+   */
+  color: PropTypes.string,
+  /**
    * Index of the word to be highlighted (starts from the 1)
    * * works only when heading children has a {string} type
    */
   accent: PropTypes.number,
+  /**
+   * Accented word color
+   */
+  accentColor: PropTypes.string,
 }
 Heading.defaultProps = {
-  accent: undefined
+  color: "#000000",
+  accent: undefined,
+  accentColor: "#5B4DFF",
 }

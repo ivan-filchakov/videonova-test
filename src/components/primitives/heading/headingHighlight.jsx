@@ -1,15 +1,25 @@
 import React from "react"
+import PropTypes from "prop-types"
 
-export default function headingHighlight(text, accent) {
-  function Highlight({ children }) {
-  return (
-    <span style={{color:"red"}}> {children} </span>
-  )
-}
+function headingHighlight(text, accent, color) {
   const words = text.split(" ")
-  const accentIndex = (accent > words.length) ? words.length : accent
+  const accentIndex = accent > words.length ? words.length : accent
   const start = words.slice(0, accentIndex - 1).join(" ")
-  const accentWord = <Highlight children={words[accentIndex - 1]} />
+  const accentWord = (
+    <span style={{ color: color }}>{words[accentIndex - 1]}</span>
+  )
   const end = words.slice(accentIndex).join(" ")
-  return [start, accentWord, end]
+  return [start, " ", accentWord, " ", end]
+}
+
+export default headingHighlight
+headingHighlight.propTypes = {
+  /**
+   * Heading text string
+   */
+  text: PropTypes.string.isRequired,
+  /**
+   * Index of the word to be highlighted (starts from the 1)
+   */
+  accent: PropTypes.number.isRequired,
 }
