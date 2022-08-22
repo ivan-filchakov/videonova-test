@@ -18,11 +18,12 @@ Image.propTypes = {
    */
   alt: PropTypes.string,
   /**
-   * Адаптація розміру зображення відносно контейнера - Cover, Contain, Center. Якщо параметр fit не вказаний - рендериться inline-block.
+   * Determines image position inside block
    */
-  fit: PropTypes.oneOf(["cover", "contain", "center"]).isRequired,
+  fit: PropTypes.oneOf(["cover", "contain", "center"]),
 }
 
 Image.defaultProps = {
   alt: "image",
+  fit: undefined,
 }

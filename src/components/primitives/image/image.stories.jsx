@@ -34,26 +34,26 @@ function Template(args) {
   )
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
-  src: "https://placehold.jp/100x100.png",
+export const Default = Template.bind({})
+Default.args = {
+  src: "https://picsum.photos/100/100/",
   alt: "img",
 }
 
 export const Cover = Template.bind({})
 Cover.args = {
-  ...Primary.args,
+  ...Default.args,
   fit: "cover",
 }
 
 export const Contain = Template.bind({})
 Contain.args = {
-  ...Primary.args,
+  ...Default.args,
   fit: "contain",
 }
 
 export const Center = Template.bind({})
 Center.args = {
-  ...Primary.args,
+  ...Default.args,
   fit: "center",
 }
