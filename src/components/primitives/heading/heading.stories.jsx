@@ -31,7 +31,7 @@ WithAccent.args = {
   h: 1,
   children: "This is heading with an accent",
   accent: 4,
-  accentColor: "#5B4DFF"
+  accentColor: "#5B4DFF",
 }
 
 export function WithNodesInside({ h }) {

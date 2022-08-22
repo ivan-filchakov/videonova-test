@@ -6,7 +6,7 @@ function headingHighlight(text, accent, color) {
   const accentIndex = accent > words.length ? words.length : accent
   const start = words.slice(0, accentIndex - 1).join(" ")
   const accentWord = (
-    <span style={{ color: color }}>{words[accentIndex - 1]}</span>
+    <span style={{ color }}>{words[accentIndex - 1]}</span>
   )
   const end = words.slice(accentIndex).join(" ")
   return [start, " ", accentWord, " ", end]
