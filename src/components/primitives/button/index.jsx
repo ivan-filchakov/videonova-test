@@ -18,7 +18,7 @@ function Button({ label, onClick, variant, disabled, loading }) {
 
   return (
     <AdaptiveLink className={getStyles()} action={enableClick}>
-      <div className="button__label">{label}</div>
+      <span className="button__label">{label}</span>
       {showLoader && <ButtonLoader variant={variant} disabled={disabled} />}
     </AdaptiveLink>
   )
