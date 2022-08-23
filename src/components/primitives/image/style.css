@@ -1,6 +1,7 @@
 .image {
   display: inline-block;
   box-sizing: border-box;
+  background: #232323;
 }
 
 .image_cover,
