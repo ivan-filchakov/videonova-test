@@ -2,7 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 
 function Text({ children, color, size }) {
-  return <span style={{ color, fontSize: size }} className="text">{children}</span>
+  return (
+    <span style={{ color, fontSize: size }} className="text">
+      {children}
+    </span>
+  )
 }
 
 export default Text
