@@ -1,0 +1,16 @@
+.gridOfFour {
+  display: flex;
+  justify-content: space-between;
+
+  overflow-x: scroll;
+
+  gap: 2.667%;
+  overflow: paged-y;
+  height: 100%;
+}
+
+.gridOfFour__card {
+  flex-basis: 23%;
+  height: 100%;
+}
+
