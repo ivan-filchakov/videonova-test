@@ -4,9 +4,12 @@ import "./style.css"
 import AdaptiveLink from "../adaptiveLink"
 import ButtonLoader from "./buttonLoader"
 
-function Button({ label, onClick, variant, disabled, loading }) {
+function Button({ label, onClick, variant, disabled, loading, linkColor }) {
   const enableClick = disabled ? undefined : onClick
   const showLoader = loading && ["main", "transparent"].includes(variant)
+  const customLinkColor = {
+    color: variant === "link" && linkColor ? linkColor : "",
+  }
 
   const getStyles = () => {
     const styles = ["button"]
@@ -18,7 +21,9 @@ function Button({ label, onClick, variant, disabled, loading }) {
 
   return (
     <AdaptiveLink className={getStyles()} action={enableClick}>
-      <span className="button__label">{label}</span>
+      <span className="button__label" style={customLinkColor}>
+        {label}
+      </span>
       {showLoader && <ButtonLoader variant={variant} disabled={disabled} />}
     </AdaptiveLink>
   )
@@ -46,9 +51,14 @@ Button.propTypes = {
    * Indicates loading process by showing loader icon
    */
   loading: PropTypes.bool,
+  /**
+   * Button link text color
+   */
+  linkColor: PropTypes.string,
 }
 Button.defaultProps = {
   onClick: undefined,
   disabled: false,
   loading: false,
+  linkColor: undefined,
 }
