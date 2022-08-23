@@ -1,3 +1,4 @@
+/*  eslint-disable  jsx-a11y/label-has-associated-control */
 import React from "react"
 import PropTypes from "prop-types"
 import Heading from "../heading"
@@ -22,9 +23,23 @@ function InputHeading({ id, label, popUp }) {
 
 export default InputHeading
 InputHeading.propTypes = {
+  /**
+   * id for input's label tag
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Label text
+   */
   label: PropTypes.string,
+  /**
+   * If passed - creates pop-up button
+   */
+  popUp: PropTypes.shape({
+    label: PropTypes.string,
+    onClick: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  }),
 }
 InputHeading.defaultProps = {
   label: undefined,
+  popUp: undefined,
 }
