@@ -2,11 +2,18 @@ import React from "react"
 import PropTypes from "prop-types"
 
 function headingHighlight(text, accent, color) {
+  function calcIndex(i) {
+    if (i < 0) return 1
+    return words.length < i ? words.length : Math.floor(i)
+  }
+
   const words = text.split(" ")
-  const accentIndex = accent > words.length ? words.length : accent
+  const accentIndex = calcIndex(accent)
+
   const start = words.slice(0, accentIndex - 1).join(" ")
   const accentWord = <span style={{ color }}>{words[accentIndex - 1]}</span>
   const end = words.slice(accentIndex).join(" ")
+
   return [start, " ", accentWord, " ", end]
 }
 
