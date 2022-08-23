@@ -2,12 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 
 function headingHighlight(text, accent, color) {
+  const words = text.split(" ")
   function calcIndex(i) {
     if (i < 0) return 1
     return words.length < i ? words.length : Math.floor(i)
   }
-
-  const words = text.split(" ")
   const accentIndex = calcIndex(accent)
 
   const start = words.slice(0, accentIndex - 1).join(" ")

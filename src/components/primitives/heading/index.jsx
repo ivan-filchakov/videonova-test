@@ -7,11 +7,13 @@ function Heading({ h, children, color, accent, accentColor }) {
   const headingClass = `heading heading_h${h}`
   const TagH = `h${h}`
 
-  const highlighted = (accent && typeof children === "string")
-  const content = highlighted ? headingHighlight(children, accent, accentColor) : children
+  const highlighted = accent && typeof children === "string"
+  const content = highlighted
+    ? headingHighlight(children, accent, accentColor)
+    : children
 
   return (
-    <TagH className={headingClass} style={{ color: color }}>
+    <TagH className={headingClass} style={{ color }}>
       {content}
     </TagH>
   )
