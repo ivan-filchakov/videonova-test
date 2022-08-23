@@ -1,0 +1,51 @@
+.inputText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputText__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputText__popUp {
+  display: flex;
+}
+
+.inputText__input {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 14px;
+  background: #E9EEF8;
+}
+
+.inputText__input input,
+.inputText__input textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  padding: 0;
+  resize: none;
+  border: none;
+  background: none;
+}
+
+.inputText__input input:focus,
+.inputText__input textarea {
+  outline: none;
+}
+
+.inputText__icon {
+  display: flex;
+  align-items: center;
+}
+
+.inputText__icon:hover {
+  cursor: pointer;
+}
