@@ -1,10 +1,33 @@
 .header {
-  height: 54px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+
+  height: 54px;
+}
+
+.header__content {
+  position: relative;
+}
+
+.header__logoLink {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
   gap: 16px;
-  font-size: 16px;
-  font-weight: 500;
-  border: 1px solid #232323;
+}
+
+.headerControls__pic {
+  height: 54px;
+  width: 54px;
+  border-radius: 100%;
+  overflow: hidden;
 }

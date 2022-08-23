@@ -1,8 +1,34 @@
 .footer {
   height: 136px;
+  padding: 50px;
+  box-sizing: border-box;
   color: #ffffff;
   background: #232323;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.footer__logo {
+  position: relative;
+  flex-basis: 20%;
+}
+
+.footer__copyright {
+  font-weight: 500;
+}
+
+.footer__socials {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footerSocials {
+  display: flex;
+  gap: 42px;
+}
+
+.footerSocials__icon {
+  position: relative;
 }
