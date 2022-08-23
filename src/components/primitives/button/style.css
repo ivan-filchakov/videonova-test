@@ -117,6 +117,10 @@
   transition: .2s ease;
 }
 
+.button_link:hover {
+  cursor: pointer;
+}
+
 .button_link:hover:after {
   width: 100%;
 }
