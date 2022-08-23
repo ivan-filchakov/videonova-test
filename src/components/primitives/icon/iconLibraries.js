@@ -14,7 +14,7 @@ import { ReactComponent as CustomTelegram } from "./svg/telegram.svg"
 import { ReactComponent as CustomTwitter } from "./svg/twitter.svg"
 import { ReactComponent as CustomVideoFill } from "./svg/video-fill.svg"
 import { ReactComponent as CustomVideoOutline } from "./svg/video-outline.svg"
-import { ReactComponent as LogoMain } from "./svg/logo-main.svg"
+import { ReactComponent as CustomLogo } from "./svg/logo-main.svg"
 
 const CustomIcons = {
   CustomCheck,
@@ -29,7 +29,7 @@ const CustomIcons = {
   CustomTwitter,
   CustomVideoFill,
   CustomVideoOutline,
-  LogoMain,
+  CustomLogo,
 }
 
 export default function useIconLibraries() {
