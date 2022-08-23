@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import AdaptiveLink from "../adaptiveLink"
@@ -52,7 +51,9 @@ function InputText({ type, label, value, placeholder, onChange, popUp }) {
           type={inputState.type}
           value={inputState.value}
           onChange={handleInputChange}
-          {...inputProps}
+          id={inputProps.id}
+          placeholder={inputProps.placeholder}
+          maxLength={inputProps.maxLength}
         />
         {type === "password" && (
           <AdaptiveLink action={() => showPass()} className="inputText__icon">
