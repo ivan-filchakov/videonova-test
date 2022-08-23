@@ -2,16 +2,29 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import isInternalLink from "./isInternalLink"
+import "./style.css"
 
-function AdaptiveLink({ children, action, ...props }) {
+function AdaptiveLink({ children, action, stretch, ...props }) {
+  const styleMod = stretch ? "adaptiveLink_stretch" : ""
+
   if (!action) {
-    return <span {...props}>{children}</span>
+    return (
+      <span className={styleMod} {...props}>
+        {children}
+      </span>
+    )
   }
 
   if (typeof action === "function") {
     return (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <span role="button" tabIndex="0" onClick={action} {...props}>
+      <span
+        className={styleMod}
+        role="button"
+        tabIndex="0"
+        onClick={action}
+        {...props}
+      >
         {children}
       </span>
     )
@@ -19,7 +32,7 @@ function AdaptiveLink({ children, action, ...props }) {
 
   if (isInternalLink(action) && typeof action === "string") {
     return (
-      <Link to={action} {...props}>
+      <Link className={styleMod} to={action} {...props}>
         {children}
       </Link>
     )
@@ -32,6 +45,7 @@ function AdaptiveLink({ children, action, ...props }) {
       rel="noopener noreferrer"
       role="button"
       tabIndex="0"
+      className={styleMod}
       {...props}
     >
       {children}
@@ -53,8 +67,10 @@ AdaptiveLink.propTypes = {
    * Action when link is beign clicked. Can be function or a link (string)
    */
   action: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  stretch: PropTypes.bool,
 }
 AdaptiveLink.defaultProps = {
   children: undefined,
   action: undefined,
+  stretch: false,
 }
