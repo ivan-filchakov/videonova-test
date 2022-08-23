@@ -1,4 +1,6 @@
-.heading {}
+.heading {
+  margin: 0;
+}
 
 .heading_h1 {
   font-family: "Chillax", sans-serif;
