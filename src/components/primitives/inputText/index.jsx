@@ -22,7 +22,7 @@ function InputText({ type, label, value, placeholder, onChange, popUp }) {
   function showPass() {
     setInputState({
       ...inputState,
-      type: (inputState.type === "password") ? "text" : "password",
+      type: inputState.type === "password" ? "text" : "password",
     })
   }
 
