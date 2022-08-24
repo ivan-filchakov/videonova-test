@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import AdaptiveLink from "../adaptiveLink"
 import Icon from "../icon"
@@ -19,6 +19,9 @@ function InputText({ type, label, value, placeholder, onChange, popUp }) {
     value,
   })
 
+  const showPassIcon =
+    inputState.type === "password" ? "CustomEyeClosed" : "CustomEye"
+
   function showPass() {
     setInputState({
       ...inputState,
@@ -31,11 +34,11 @@ function InputText({ type, label, value, placeholder, onChange, popUp }) {
       ...inputState,
       value: el.target.value,
     })
-    if (typeof onChange === "function") onChange(inputState)
   }
 
-  const showPassIcon =
-    inputState.type === "password" ? "CustomEyeClosed" : "CustomEye"
+  useEffect(() => {
+    if (typeof onChange === "function") onChange(inputState)
+  }, [inputState])
 
   return (
     <div className="inputText" style={{ height: inputHeight }}>
