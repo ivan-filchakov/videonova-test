@@ -11,7 +11,7 @@ function headingHighlight(text, accent, color) {
 
   const start = words.slice(0, accentIndex - 1).join(" ")
   const accentWord = (
-    <span key={words[accentIndex]} style={{ color }}>
+    <span key={text} style={{ color }}>
       {words[accentIndex - 1]}
     </span>
   )
