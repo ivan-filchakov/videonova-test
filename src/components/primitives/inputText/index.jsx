@@ -20,16 +20,10 @@ function InputText({ type, label, value, placeholder, onChange, popUp }) {
   })
 
   function showPass() {
-    if (inputState.type === "password")
-      setInputState({
-        ...inputState,
-        type: "text",
-      })
-    if (inputState.type === "text")
-      setInputState({
-        ...inputState,
-        type: "password",
-      })
+    setInputState({
+      ...inputState,
+      type: (inputState.type === "password") ? "text" : "password",
+    })
   }
 
   const handleInputChange = (el) => {
@@ -74,7 +68,7 @@ InputText.propTypes = {
   /**
    * Input label
    */
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   /**
    * Sets predeterminated input value
    */
@@ -96,7 +90,6 @@ InputText.propTypes = {
   }),
 }
 InputText.defaultProps = {
-  label: undefined,
   value: undefined,
   placeholder: undefined,
   popUp: undefined,

@@ -5,8 +5,6 @@ import Heading from "../heading"
 import Button from "../button"
 
 function InputHeading({ id, label, popUp }) {
-  if (!label && !popUp) return <label htmlFor={id} hidden />
-
   return (
     <div className="inputText__heading">
       <Heading h={3}>
