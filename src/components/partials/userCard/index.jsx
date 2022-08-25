@@ -33,7 +33,8 @@ function UserCard({
         <UserCardCounter
           icon="CustomHeart"
           count={likesCount}
-          label={likesLabel} />
+          label={likesLabel}
+        />
       </div>
       <div className="userCard__button">
         <Button variant="main" label={buttonLabel} onClick={buttonClick} />
