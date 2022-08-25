@@ -16,7 +16,7 @@ function InputText({ type, label, value, placeholder, onChange, popUp }) {
 
   const [inputState, setInputState] = useState({
     type,
-    value,
+    value: value || "",
   })
 
   const showPassIcon =
