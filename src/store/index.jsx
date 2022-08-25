@@ -24,15 +24,15 @@ const siteInfoSlice = createSlice({
           label: "Sign In",
         },
       },
-      warningMessage: {
-        incorrect: "Your Password is incorrect. Please, try again!!",
-        noMatch: "Passwords doesn't match! Try again!!",
-      },
+      warningMessage: [
+        "Your Password is incorrect. Please, try again",
+        "Passwords doesn't match! Try again",
+      ],
       inputLabels: {
         login: "Name",
         password: "Password",
-        passwordRepeat: "Repeat password"
-      }
+        passwordRepeat: "Repeat password",
+      },
     },
   },
   name: "siteInfo",
