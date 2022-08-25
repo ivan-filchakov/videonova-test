@@ -9,7 +9,27 @@ export default {
   argTypes: {},
 }
 
-function Template(args) {
+export function Default(args) {
+  return (
+    <div
+      style={{
+        height: "100%",
+        background: "url(https://picsum.photos/100/100/)",
+        backgroundSize: "cover",
+      }}>
+      <Modal {...args}>
+        <div>Modal children content here</div>
+        <div>Modal children content here</div>
+        <div>Modal children content here</div>
+      </Modal>
+    </div>
+  )
+}
+Default.args = {
+  onClose: ""
+}
+
+export function ModalWithSignForm(args) {
   return (
     <div
       style={{
@@ -23,7 +43,6 @@ function Template(args) {
     </div>
   )
 }
-export const ModalWithSignForm = Template.bind({})
 ModalWithSignForm.args = {
   onClose: "http://google.com"
 }
