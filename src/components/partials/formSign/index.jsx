@@ -1,17 +1,17 @@
 import React, { useState } from "react"
 import { Button, Heading, Text } from "../../primitives"
-import { useSignFormInfo } from "./useSiteInfo"
+import useSignFormInfo from "./useSiteInfo"
 import FormSignIn from "./formSignIn"
 import FormSignUp from "./formSIgnUp"
 import "./style.css"
 
 function FormSign() {
-
-  const { signInInfo, signUpInfo, warningMessage, inputLabels } = useSignFormInfo()
+  const { signInInfo, signUpInfo, warningMessage, inputLabels } =
+    useSignFormInfo()
 
   const [formState, setFormState] = useState({
     registered: false,
-    warning: false,
+    warning: true,
   })
   const getFormState = (el) => {
     setFormState({
@@ -25,10 +25,12 @@ function FormSign() {
   const formInfo = formState.registered ? signInInfo : signUpInfo
   const Form = formState.registered ? FormSignIn : FormSignUp
 
-  const swapClick = () => setFormState({
-    ...formState,
-    registered: !formState.registered
-  })
+  const swapClick = () => {
+    setFormState({
+      ...formState,
+      registered: !formState.registered,
+    })
+  }
 
   return (
     <div className="formSign">
@@ -39,7 +41,7 @@ function FormSign() {
       </div>
       <div className="formSign__inputs">
         <Form
-          info={formInfo}
+          popUpLabel={formInfo.popUpLabel}
           inputLabels={inputLabels}
           warning={formState.warning}
           warningMessage={warningMessage}
@@ -52,7 +54,11 @@ function FormSign() {
       </div>
       <div className="formSign__footer">
         <Text>{formInfo.swap.text}</Text>
-        <Button label={formInfo.swap.label} onClick={swapClick} variant="link" />
+        <Button
+          label={formInfo.swap.label}
+          onClick={swapClick}
+          variant="link"
+        />
       </div>
     </div>
   )

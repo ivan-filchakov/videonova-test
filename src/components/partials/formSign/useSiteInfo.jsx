@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux"
 
-export function useSignFormInfo() {
+function useSignFormInfo() {
   const signFormInfo = useSelector((store) => store.siteInfo.signFormInfo)
   return { ...signFormInfo }
 }
+
+export default useSignFormInfo

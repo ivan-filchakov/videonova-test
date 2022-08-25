@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import PropTypes from "prop-types"
 import { InputText, Text } from "../../primitives"
 
 function FormSignIn({
@@ -6,8 +7,8 @@ function FormSignIn({
   warningMessage,
   getFormState,
   loginValue,
-  info,
-  inputLabels
+  popUpLabel,
+  inputLabels,
 }) {
   const [formState, setFormState] = useState({
     login: loginValue,
@@ -25,11 +26,11 @@ function FormSignIn({
     })
   }
   useEffect(() => {
-    if (typeof getFormState === "function" ) getFormState(formState)
+    if (typeof getFormState === "function") getFormState(formState)
   }, [formState])
 
   const popUp = {
-    label: info.popUpLabel,
+    label: popUpLabel,
     onClick: "",
   }
 
@@ -38,9 +39,7 @@ function FormSignIn({
       {warning && (
         <div className="formInputs__warning">
           <div className="formWarning">
-            <Text color="#000000">
-              {warningMessage.incorrect}
-            </Text>
+            <Text color="#000000">{warningMessage[0]}</Text>
           </div>
         </div>
       )}
@@ -65,3 +64,18 @@ function FormSignIn({
 }
 
 export default FormSignIn
+FormSignIn.propTypes = {
+  warning: PropTypes.bool.isRequired,
+  warningMessage: PropTypes.arrayOf(PropTypes.string).isRequired,
+  getFormState: PropTypes.func.isRequired,
+  loginValue: PropTypes.string,
+  popUpLabel: PropTypes.string.isRequired,
+  inputLabels: PropTypes.shape({
+    login: PropTypes.string,
+    password: PropTypes.string,
+    passwordRepeat: PropTypes.string,
+  }).isRequired,
+}
+FormSignIn.defaultProps = {
+  loginValue: undefined,
+}
