@@ -11,7 +11,7 @@ function FormSign() {
 
   const [formState, setFormState] = useState({
     registered: false,
-    warning: true,
+    warning: false,
   })
   const getFormState = (el) => {
     setFormState({
