@@ -6,6 +6,34 @@ import PropTypes from "prop-types"
 const siteInfoSlice = createSlice({
   initialState: {
     test: "hello",
+    signFormInfo: {
+      signInInfo: {
+        heading: "Sign In",
+        buttonLabel: "Sign In",
+        swap: {
+          text: "Dont have an account?",
+          label: "Sign Up",
+        },
+        popUpLabel: "Forgot password?",
+      },
+      signUpInfo: {
+        heading: "Sign Up",
+        buttonLabel: "Sign Up",
+        swap: {
+          text: "Already have an account?",
+          label: "Sign In",
+        },
+      },
+      warningMessage: {
+        incorrect: "Your Password is incorrect. Please, try again!!",
+        noMatch: "Passwords doesn't match! Try again!!",
+      },
+      inputLabels: {
+        login: "Name",
+        password: "Password",
+        passwordRepeat: "Repeat password"
+      }
+    },
   },
   name: "siteInfo",
 })

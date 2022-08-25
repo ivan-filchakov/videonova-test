@@ -1,0 +1,31 @@
+.formSign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.formSign__inputs {
+  width: 100%;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formWarning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+  background: #FADCDE;
+}
+
+.formSign__footer {
+  display: flex;
+  gap: 10px;
+}
