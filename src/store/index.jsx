@@ -2,10 +2,17 @@ import React from "react"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import PropTypes from "prop-types"
+import modalReducers from "./reducers/modalReducers"
+import userReducers from "./reducers/userReducers"
 
 const siteInfoSlice = createSlice({
   initialState: {
     test: "hello",
+    headerInfo: {
+      headerControls: {
+        buttonLabel: "Sign Up",
+      },
+    },
     signFormInfo: {
       signInInfo: {
         heading: "Sign In",
@@ -38,9 +45,29 @@ const siteInfoSlice = createSlice({
   name: "siteInfo",
 })
 
+const userInfoSlice = createSlice({
+  initialState: {
+    authorized: false,
+    name: "Store Username",
+  },
+  name: "userInfo",
+  reducers: userReducers(),
+})
+
+const modalSlice = createSlice({
+  initialState: {
+    isOpen: false,
+    content: null,
+  },
+  name: "modal",
+  reducers: modalReducers(),
+})
+
 export const store = configureStore({
   reducer: {
     siteInfo: siteInfoSlice.reducer,
+    userInfo: userInfoSlice.reducer,
+    modal: modalSlice.reducer,
   },
 })
 
