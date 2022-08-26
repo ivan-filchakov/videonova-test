@@ -5,4 +5,9 @@ function useSignFormInfo() {
   return { ...signFormInfo }
 }
 
-export default useSignFormInfo
+function useUserInfo() {
+  const user = useSelector((store) => store.user)
+  return { ...user }
+}
+
+export { useSignFormInfo, useUserInfo }

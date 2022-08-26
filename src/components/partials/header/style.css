@@ -2,8 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-
   height: 54px;
 }
 
@@ -26,6 +24,7 @@
 }
 
 .headerControls__pic {
+  position: relative;
   height: 54px;
   width: 54px;
   border-radius: 100%;
@@ -33,7 +32,12 @@
 }
 
 .headerControls__profileControl {
+  position: relative;
   display: flex;
   align-items: center;
   opacity: 50%;
+}
+
+.headerControls__profileControl:hover {
+  cursor: pointer;
 }

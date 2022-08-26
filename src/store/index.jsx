@@ -42,7 +42,8 @@ const siteInfoSlice = createSlice({
         "No spaces in the password",
         "Incorrect symbols used in password",
         "Passwords doesn't match! Try again",
-        "Your Password is incorrect. Please, try again",
+        "Enter your name",
+        "Enter your password",
       ],
       inputLabels: {
         login: "Name",
@@ -65,6 +66,7 @@ const modalSlice = createSlice({
 
 const userSlice = createSlice({
   initialState: {
+    requesting: false,
     authorized: false,
     authError: null,
     info: null,

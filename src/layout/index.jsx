@@ -14,7 +14,7 @@ function Layout({ children }) {
   }
 
   const dispatch = useDispatch()
-  const hideModal = () => {
+  const closeModal = () => {
     dispatch({
       type: "modal/toggle",
       payload: false,
@@ -23,7 +23,7 @@ function Layout({ children }) {
 
   return (
     <div className="layout">
-      <Modal isOpen={modal.isOpen} onClose={hideModal}>
+      <Modal isOpen={modal.isOpen} onClose={closeModal}>
         {ModalContentLib[modal.content]}
       </Modal>
       <div className="layout__header">

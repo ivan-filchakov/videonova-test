@@ -5,17 +5,17 @@ export default function userReducers() {
       state.requesting = true
       // state.authorized = true
     },
-    authSucces(state, action) {
+    authSuccess(state, action) {
       state.requesting = false
       state.authorized = true
-      state.info = action.payload.info
       state.authError = null
+      state.info = action.payload
     },
     authError(state, action) {
       state.requesting = false
       state.authorized = false
-      state.userInfo = null
-      state.authError = action.payload.error.toString()
+      state.authError = action.payload
+      state.info = null
     },
     unauthorize(state) {
       state.requesting = false

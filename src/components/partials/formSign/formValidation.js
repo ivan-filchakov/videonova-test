@@ -1,5 +1,5 @@
 function validateLogin(login) {
-  if (!login) return false
+  if (!login) return [false, 6]
   if (login.indexOf("  ") >= 0) {
     return [false, 1]
   }
@@ -10,7 +10,7 @@ function validateLogin(login) {
 }
 
 function validatePassword(pass) {
-  if (!pass) return false
+  if (!pass) return [false, 7]
   if (pass.indexOf(" ") >= 0) {
     return [false, 3]
   }
@@ -29,9 +29,8 @@ export default function validateForm(state) {
   const validLogin = validateLogin(login)
   const validPassword = validatePassword(password)
   const validRepeat = validateRepeat(password, passwordRepeat)
-  if (registered && validLogin + validPassword === 2) {
-    return true
-  }
+
+  if (registered && validLogin + validPassword === 2) return true
 
   if (validLogin + validPassword + validRepeat === 3) return true
 

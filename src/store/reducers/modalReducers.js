@@ -6,6 +6,7 @@ export default function modalReducers() {
       if (!state.isOpen) state.content = null
     },
     placeContent(state, action) {
+      state.isOpen = true
       state.content = action.payload
     },
   }
