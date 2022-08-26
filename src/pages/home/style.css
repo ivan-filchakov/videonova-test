@@ -1,0 +1,13 @@
+.homeBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homeBanner__heading {
+  margin-bottom: 24px;
+}
+
+.homeBanner__text {
+  margin-bottom: 48px;
+}
