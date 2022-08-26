@@ -4,8 +4,7 @@ import UserCard from "../userCard"
 import "./style.css"
 
 function GridOfFour({ elements }) {
-
-  const grid = elements.map(el => (
+  const grid = elements.map((el) => (
     <div className="gridOfFour__card" key={el.name}>
       <UserCard
         key={el.name}
@@ -22,9 +21,7 @@ function GridOfFour({ elements }) {
   ))
 
   return (
-    <div className="gridOfFour">
-      {grid}
-    </div>
+    <div className="gridOfFour">{grid}</div>
   )
 }
 
