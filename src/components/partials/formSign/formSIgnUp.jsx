@@ -39,7 +39,7 @@ function FormSignUp({
       {warning && (
         <div className="formInputs__warning">
           <div className="formWarning">
-            <Text color="#000000">{warningMessage[1]}</Text>
+            <Text color="#000000">{warningMessage}</Text>
           </div>
         </div>
       )}
@@ -72,7 +72,7 @@ function FormSignUp({
 export default FormSignUp
 FormSignUp.propTypes = {
   warning: PropTypes.bool.isRequired,
-  warningMessage: PropTypes.arrayOf(PropTypes.string).isRequired,
+  warningMessage: PropTypes.string,
   getFormState: PropTypes.func.isRequired,
   loginValue: PropTypes.string,
   inputLabels: PropTypes.shape({
@@ -82,5 +82,6 @@ FormSignUp.propTypes = {
   }).isRequired,
 }
 FormSignUp.defaultProps = {
+  warningMessage: undefined,
   loginValue: undefined,
 }

@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Button, Heading, Text } from "../../primitives"
 import useSignFormInfo from "./useStore"
 import FormSignIn from "./formSignIn"
 import FormSignUp from "./formSIgnUp"
+import validateForm from "./formValidation"
 import "./style.css"
 
 function FormSign() {
@@ -21,6 +22,23 @@ function FormSign() {
       passwordRepeat: el.passwordRepeat,
     })
   }
+  const getWarning = (id) => {
+    setFormState({
+      ...formState,
+      warning: true,
+      message: warningMessage[id],
+    })
+  }
+  const removeWarning = () => {
+    setFormState({
+      ...formState,
+      warning: false,
+      message: undefined,
+    })
+  }
+  useEffect(() => {
+    setTimeout(removeWarning, 2000)
+  }, [formState.warning])
 
   const formInfo = formState.registered ? signInInfo : signUpInfo
   const Form = formState.registered ? FormSignIn : FormSignUp
@@ -30,6 +48,12 @@ function FormSign() {
       ...formState,
       registered: !formState.registered,
     })
+  }
+
+  const findErrors = (form) => {
+    const result = validateForm(form)
+    if (typeof result === "string") getWarning(result)
+    if (typeof result === "boolean" && result === true) alert("ok")
   }
 
   return (
@@ -44,13 +68,17 @@ function FormSign() {
           popUpLabel={formInfo.popUpLabel}
           inputLabels={inputLabels}
           warning={formState.warning}
-          warningMessage={warningMessage}
+          warningMessage={formState.message}
           getFormState={getFormState}
           loginValue={formState.login}
         />
       </div>
       <div className="formSign__button">
-        <Button label={formInfo.buttonLabel} onClick="" variant="main" />
+        <Button
+          label={formInfo.buttonLabel}
+          onClick={() => findErrors(formState)}
+          variant="main"
+        />
       </div>
       <div className="formSign__footer">
         <Text>{formInfo.swap.text}</Text>
