@@ -15,7 +15,6 @@ function HeaderControls() {
     dispatch({
       type: "user/unauthorize",
     })
-    return "/"
   }
 
   const { headerControls } = useHeaderInfo()
