@@ -31,3 +31,9 @@
   border-radius: 100%;
   overflow: hidden;
 }
+
+.headerControls__profileControl {
+  display: flex;
+  align-items: center;
+  opacity: 50%;
+}
