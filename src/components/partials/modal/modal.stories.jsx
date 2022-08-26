@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import Modal from "./index"
-import FormSign from "../../partials/formSign";
+import FormSign from "../formSign";
 
 export default {
-  title: "primitives/Modal",
+  title: "partials/Modal",
   component: Modal,
   argTypes: {},
 }
@@ -26,7 +26,8 @@ export function Default(args) {
   )
 }
 Default.args = {
-  onClose: ""
+  isOpen: true,
+  onClose: "",
 }
 
 export function ModalWithSignForm(args) {
@@ -44,5 +45,6 @@ export function ModalWithSignForm(args) {
   )
 }
 ModalWithSignForm.args = {
-  onClose: "http://google.com"
+  isOpen: true,
+  onClose: "http://google.com",
 }

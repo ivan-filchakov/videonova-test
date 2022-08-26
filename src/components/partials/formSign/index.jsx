@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Button, Heading, Text } from "../../primitives"
-import useSignFormInfo from "./useSiteInfo"
+import useSignFormInfo from "./useStore"
 import FormSignIn from "./formSignIn"
 import FormSignUp from "./formSIgnUp"
 import "./style.css"
