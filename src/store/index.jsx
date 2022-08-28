@@ -51,6 +51,12 @@ const siteInfoSlice = createSlice({
         passwordRepeat: "Repeat password",
       },
     },
+    homePageInfo: {
+      heading: "Welcome to VideoNova",
+      subheading:
+        "Creative videos with a single click. Add subtitles, transcribe and more",
+      buttonLabel: "Start Now",
+    },
   },
   name: "siteInfo",
 })
@@ -75,11 +81,26 @@ const userSlice = createSlice({
   reducers: userReducers(),
 })
 
+async function mockApiCall() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() > 0.5) resolve({ some: "info" })
+      reject(new Error("some error"))
+    }, 1000)
+  })
+}
+
 const listenerMiddleware = createListenerMiddleware()
 listenerMiddleware.startListening({
   actionCreator: userSlice.actions.authorize,
-  effect: (action) => {
+  effect: async (action, listenerApi) => {
     console.log(action.type)
+    try {
+      const result = await mockApiCall()
+      listenerApi.dispatch(userSlice.actions.authSuccess(result))
+    } catch (e) {
+      listenerApi.dispatch(userSlice.actions.authError(e))
+    }
   },
 })
 
