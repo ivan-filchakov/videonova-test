@@ -3,7 +3,6 @@ export default function userReducers() {
   return {
     authorize(state) {
       state.requesting = true
-      // state.authorized = true
     },
     authSuccess(state, action) {
       state.requesting = false
