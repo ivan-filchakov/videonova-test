@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import Modal from "./index"
-import FormSign from "../formSign";
+import FormSign from "../formSign"
 
 export default {
   title: "partials/Modal",
@@ -16,7 +16,8 @@ export function Default(args) {
         height: "100%",
         background: "url(https://picsum.photos/100/100/)",
         backgroundSize: "cover",
-      }}>
+      }}
+    >
       <Modal {...args}>
         <div>Modal children content here</div>
         <div>Modal children content here</div>
@@ -37,7 +38,8 @@ export function ModalWithSignForm(args) {
         height: "100%",
         background: "url(https://picsum.photos/100/100/)",
         backgroundSize: "cover",
-      }}>
+      }}
+    >
       <Modal {...args}>
         <FormSign />
       </Modal>

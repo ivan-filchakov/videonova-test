@@ -1,8 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import "./style.css"
-import Icon from "../../primitives/icon"
-import { AdaptiveLink } from "../../primitives"
+import { AdaptiveLink, Icon } from "../../primitives"
 
 function Modal({ children, isOpen, onClose }) {
   if (isOpen)
