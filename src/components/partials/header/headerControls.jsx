@@ -1,10 +1,12 @@
 import React from "react"
 import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { AdaptiveLink, Button, Icon, Image } from "../../primitives"
 import { useHeaderInfo, useUserInfo } from "./useStore"
 
 function HeaderControls() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const showModal = () => {
     dispatch({
       type: "modal/placeContent",
@@ -15,6 +17,7 @@ function HeaderControls() {
     dispatch({
       type: "user/unauthorize",
     })
+    navigate("/")
   }
 
   const { headerControls } = useHeaderInfo()
@@ -27,7 +30,7 @@ function HeaderControls() {
           <Button
             variant="transparent"
             label={headerControls.buttonLabel}
-            onClick={() => showModal()}
+            onClick={showModal}
           />
         </div>
       )}

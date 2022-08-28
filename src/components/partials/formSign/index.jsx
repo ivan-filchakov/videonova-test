@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { Button, Heading, Text } from "../../primitives"
 import { useSignFormInfo } from "./useStore"
 import FormSignIn from "./formSignIn"
@@ -10,6 +11,9 @@ import "./style.css"
 function FormSign() {
   const { signInInfo, signUpInfo, warningMessage, inputLabels } =
     useSignFormInfo()
+
+  // const userState = useSelector(({ user }) => user)
+  // console.log(userState)
 
   const [formState, setFormState] = useState({
     requesting: false,
@@ -48,6 +52,7 @@ function FormSign() {
 
   const [response, setResponse] = useState()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const saveResponse = (el) => {
     console.log(el)
     if (el.type === "notfound" || "exists") {
@@ -67,6 +72,7 @@ function FormSign() {
         payload: false,
       })
     }
+    navigate(`/user/${el.userName}`)
   }
 
   useEffect(() => {
@@ -89,7 +95,6 @@ function FormSign() {
       .then((res) => res.json())
       .then((res) => setResponse(res))
       .then(() => toggleRequesting(false))
-    return null
   }
 
   function submitSignIn() {
@@ -108,13 +113,12 @@ function FormSign() {
       .then((res) => res.json())
       .then((res) => setResponse(res))
       .then(() => toggleRequesting(false))
-    return null
   }
 
   async function submitForm() {
     const error = await findErrors(formState)
-    if (!error && !formState.registered) submitSignUp()
-    if (!error && formState.registered) submitSignIn()
+    const submit = formState.registered ? submitSignIn : submitSignUp
+    if (!error) submit()
   }
 
   const formInfo = formState.registered ? signInInfo : signUpInfo
