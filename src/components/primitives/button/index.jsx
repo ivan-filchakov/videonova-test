@@ -5,7 +5,7 @@ import AdaptiveLink from "../adaptiveLink"
 import ButtonLoader from "./buttonLoader"
 
 function Button({ label, onClick, variant, disabled, loading, linkColor }) {
-  const enableClick = disabled ? undefined : onClick
+  const enableClick = disabled || loading ? undefined : onClick
   const showLoader = loading && ["main", "transparent"].includes(variant)
   const customLinkColor = {
     color: variant === "link" && linkColor ? linkColor : "",

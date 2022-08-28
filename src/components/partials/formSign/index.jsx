@@ -5,7 +5,6 @@ import { useSignFormInfo } from "./useStore"
 import FormSignIn from "./formSignIn"
 import FormSignUp from "./formSIgnUp"
 import validateForm from "./formValidation"
-// import { submitSignUp, submitSignIn } from "./apiCalls"
 import "./style.css"
 
 function FormSign() {
@@ -13,6 +12,7 @@ function FormSign() {
     useSignFormInfo()
 
   const [formState, setFormState] = useState({
+    requesting: false,
     registered: false,
     warning: false,
   })
@@ -38,6 +38,12 @@ function FormSign() {
       return true
     }
     return false
+  }
+  const toggleRequesting = (val) => {
+    setFormState({
+      ...formState,
+      requesting: val,
+    })
   }
 
   const [response, setResponse] = useState()
@@ -68,6 +74,7 @@ function FormSign() {
   }, [response])
 
   function submitSignUp() {
+    toggleRequesting(true)
     fetch("https://wonderful-app-lmk4d.cloud.serverless.com/register", {
       method: "POST",
       body: JSON.stringify({
@@ -81,10 +88,12 @@ function FormSign() {
     })
       .then((res) => res.json())
       .then((res) => setResponse(res))
+      .then(() => toggleRequesting(false))
     return null
   }
 
   function submitSignIn() {
+    toggleRequesting(true)
     fetch("https://wonderful-app-lmk4d.cloud.serverless.com/auth", {
       method: "POST",
       body: JSON.stringify({
@@ -98,6 +107,7 @@ function FormSign() {
     })
       .then((res) => res.json())
       .then((res) => setResponse(res))
+      .then(() => toggleRequesting(false))
     return null
   }
 
@@ -109,7 +119,7 @@ function FormSign() {
 
   const formInfo = formState.registered ? signInInfo : signUpInfo
   const Form = formState.registered ? FormSignIn : FormSignUp
-  const swapForms = () => {
+  const switchForms = () => {
     setFormState({
       ...formState,
       registered: !formState.registered,
@@ -139,13 +149,14 @@ function FormSign() {
           label={formInfo.buttonLabel}
           onClick={() => submitForm()}
           variant="main"
+          loading={formState.requesting}
         />
       </div>
       <div className="formSign__footer">
-        <Text>{formInfo.swap.text}</Text>
+        <Text>{formInfo.switch.text}</Text>
         <Button
-          label={formInfo.swap.label}
-          onClick={swapForms}
+          label={formInfo.switch.label}
+          onClick={switchForms}
           variant="link"
         />
       </div>

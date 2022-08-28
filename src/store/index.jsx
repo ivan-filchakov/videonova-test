@@ -21,7 +21,7 @@ const siteInfoSlice = createSlice({
       signInInfo: {
         heading: "Sign In",
         buttonLabel: "Sign In",
-        swap: {
+        switch: {
           text: "Dont have an account?",
           label: "Sign Up",
         },
@@ -30,7 +30,7 @@ const siteInfoSlice = createSlice({
       signUpInfo: {
         heading: "Sign Up",
         buttonLabel: "Sign Up",
-        swap: {
+        switch: {
           text: "Already have an account?",
           label: "Sign In",
         },
