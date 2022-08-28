@@ -71,8 +71,8 @@ function FormSign() {
         type: "modal/toggle",
         payload: false,
       })
+      navigate(`/user/${el.userName}`)
     }
-    navigate(`/user/${el.userName}`)
   }
 
   useEffect(() => {
