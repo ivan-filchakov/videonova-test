@@ -6,8 +6,14 @@ import {
 } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import PropTypes from "prop-types"
-import modalReducers from "./reducers/modalReducers"
-import userReducers from "./reducers/userReducers"
+import {
+  allUsersReducers,
+  modalReducers,
+  recentVideosReducers,
+  userReducers,
+} from "./reducers"
+import callAllUsers from "./actions/allUsers.actions"
+import callRecentVideos from "./actions/recentVideos.actions"
 
 const siteInfoSlice = createSlice({
   initialState: {
@@ -85,21 +91,66 @@ async function mockApiCall() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (Math.random() > 0.5) resolve({ some: "info" })
-      reject(new Error("some error"))
+      reject(new Error("some error from mock function"))
     }, 1000)
   })
 }
 
-const listenerMiddleware = createListenerMiddleware()
-listenerMiddleware.startListening({
+const userAuth = createListenerMiddleware()
+userAuth.startListening({
   actionCreator: userSlice.actions.authorize,
   effect: async (action, listenerApi) => {
-    console.log(action.type)
     try {
       const result = await mockApiCall()
       listenerApi.dispatch(userSlice.actions.authSuccess(result))
     } catch (e) {
-      listenerApi.dispatch(userSlice.actions.authError(e))
+      listenerApi.dispatch(userSlice.actions.authError({ e }))
+    }
+  },
+})
+
+const allUsersSlice = createSlice({
+  initialState: {
+    requesting: false,
+    requestError: null,
+    info: null,
+  },
+  name: "allUsers",
+  reducers: allUsersReducers(),
+})
+
+const listenAllUsers = createListenerMiddleware()
+listenAllUsers.startListening({
+  actionCreator: allUsersSlice.actions.request,
+  effect: async (action, listenerApi) => {
+    try {
+      const result = await callAllUsers()
+      listenerApi.dispatch(allUsersSlice.actions.requestSuccess(result))
+    } catch (e) {
+      listenerApi.dispatch(allUsersSlice.actions.requestError({ e }))
+    }
+  },
+})
+
+const recentVideosSlice = createSlice({
+  initialState: {
+    requesting: false,
+    requestError: null,
+    info: null,
+  },
+  name: "recentVideos",
+  reducers: recentVideosReducers(),
+})
+
+const listenRecentVideos = createListenerMiddleware()
+listenRecentVideos.startListening({
+  actionCreator: recentVideosSlice.actions.request,
+  effect: async (action, listenerApi) => {
+    try {
+      const result = await callRecentVideos()
+      listenerApi.dispatch(recentVideosSlice.actions.requestSuccess(result))
+    } catch (e) {
+      listenerApi.dispatch(recentVideosSlice.actions.requestError({ e }))
     }
   },
 })
@@ -109,9 +160,15 @@ export const store = configureStore({
     siteInfo: siteInfoSlice.reducer,
     user: userSlice.reducer,
     modal: modalSlice.reducer,
+    allUsers: allUsersSlice.reducer,
+    recentVideos: recentVideosSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(listenerMiddleware.middleware),
+    getDefaultMiddleware().prepend([
+      userAuth.middleware,
+      listenAllUsers.middleware,
+      listenRecentVideos.middleware,
+    ]),
 })
 export const { authorize } = userSlice.actions
 
