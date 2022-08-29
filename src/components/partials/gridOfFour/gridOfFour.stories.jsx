@@ -6,9 +6,7 @@ import Text from "../../primitives/text"
 export default {
   title: "partials/GridOfFour",
   component: GridOfFour,
-  argTypes: {
-    // type: { control: "radio", options: ["text", "password", "textarea"] },
-  },
+  argTypes: {},
 }
 
 function Template(args) {
