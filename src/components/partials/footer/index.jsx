@@ -1,6 +1,7 @@
 import React from "react"
 import { AdaptiveLink, Icon, Text } from "../../primitives"
 import "./style.css"
+import "./style.media.css"
 
 function Footer() {
   return (
