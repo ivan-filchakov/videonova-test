@@ -5,6 +5,7 @@ import { Heading, Icon } from "../../primitives"
 import UserCard from "../userCard"
 import Loader from "../../primitives/loader"
 import "./style.css"
+import "./style.media.css"
 
 function UsersList() {
   const users = useSelector(({ allUsers }) => allUsers)
