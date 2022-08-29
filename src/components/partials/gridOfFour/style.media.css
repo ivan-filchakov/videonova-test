@@ -1,0 +1,12 @@
+@media screen and (max-width: 768px) {
+
+  .gridOfFour {
+    gap: 2%;
+  }
+
+  .gridOfFour__card {
+    flex-basis: 48%;
+    background: #9fa0f1;
+  }
+
+}

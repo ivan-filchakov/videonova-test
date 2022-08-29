@@ -13,7 +13,7 @@ export default function userReducers() {
     authError(state, action) {
       state.requesting = false
       state.authorized = false
-      state.authError = action.payload
+      state.authError = action.payload.error.toString()
       state.info = null
     },
     unauthorize(state) {
