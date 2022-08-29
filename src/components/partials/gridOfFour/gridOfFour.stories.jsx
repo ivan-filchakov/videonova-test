@@ -16,7 +16,15 @@ function Template(args) {
     <div style={{ height: "450px", border: "1px dashed black" }}>
       <GridOfFour {...args}>
         <Text>test</Text>
-        <Text>test<br/>test<br/>test<br/>test</Text>
+        <Text>
+          test
+          <br/>
+          test
+          <br/>
+          test
+          <br/>
+          test
+        </Text>
         <Text>test</Text>
         <Text>test</Text>
       </GridOfFour>
