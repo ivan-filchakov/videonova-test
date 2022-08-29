@@ -12,8 +12,8 @@ import {
   recentVideosReducers,
   userReducers,
 } from "./reducers"
-import callAllUsers from "./actions/allUsers.actions"
-import callRecentVideos from "./actions/recentVideos.actions"
+import callAllUsers from "./actions/allUsers.action"
+import callRecentVideos from "./actions/recentVideos.action"
 
 const siteInfoSlice = createSlice({
   initialState: {
