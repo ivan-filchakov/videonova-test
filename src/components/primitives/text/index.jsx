@@ -18,7 +18,7 @@ Text.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]).isRequired,
+  ]),
   /**
    * Text color value
    */
@@ -29,6 +29,7 @@ Text.propTypes = {
   size: PropTypes.string,
 }
 Text.defaultProps = {
+  children: undefined,
   color: "#5B5B5B",
   size: "16px",
 }
