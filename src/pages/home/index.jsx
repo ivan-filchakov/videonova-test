@@ -24,24 +24,28 @@ function HomePage() {
   return (
     <Layout>
       <div className="homePage">
-        <div className="homeBanner">
-          <div className="homeBanner__heading">
-            <Heading h={1} accent={3} accentColor="#FF6363">
-              {homePageInfo.heading}
-            </Heading>
-          </div>
-          <div className="homeBanner__text">
-            <Text>{homePageInfo.subheading}</Text>
-          </div>
-          <div className="homeBanner__button">
-            <Button
-              label={homePageInfo.buttonLabel}
-              variant="main"
-              onClick={bannerButton}
-            />
+        <div className="homePage__welcome">
+          <div className="homeBanner">
+            <div className="homeBanner__heading">
+              <Heading h={1} accent={3} accentColor="#FF6363">
+                {homePageInfo.heading}
+              </Heading>
+            </div>
+            <div className="homeBanner__text">
+              <Text>{homePageInfo.subheading}</Text>
+            </div>
+            <div className="homeBanner__button">
+              <Button
+                label={homePageInfo.buttonLabel}
+                variant="main"
+                onClick={bannerButton}
+              />
+            </div>
           </div>
         </div>
-        <UsersList />
+        <div className="homePage__content">
+          <UsersList />
+        </div>
       </div>
     </Layout>
   )
