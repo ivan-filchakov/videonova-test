@@ -4,13 +4,27 @@ import "./style.css"
 import "./style.media.css"
 
 function GridOfFour({ children }) {
-  const grid = children.map((el) => (
-    <div className="gridOfFour__card" key={children.indexOf(el)}>
-      {el}
-    </div>
-  ))
+  if (!children.length)
+    return (
+      <div className="gridOfFour">
+        <div className="gridOfFour__card">{children}</div>
+      </div>
+    )
 
-  return <div className="gridOfFour">{grid}</div>
+  if (typeof children === "object") {
+    const grid = children.map((el) => (
+      <div className="gridOfFour__card" key={children.indexOf(el)}>
+        {el}
+      </div>
+    ))
+
+    return <div className="gridOfFour">{grid}</div>
+  }
+  return (
+    <div className="gridOfFour">
+      <div className="gridOfFour__card">{children}</div>
+    </div>
+  )
 }
 
 export default GridOfFour

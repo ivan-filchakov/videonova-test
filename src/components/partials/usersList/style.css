@@ -1,0 +1,10 @@
+.usersList {
+}
+
+.usersList__heading {
+  margin-bottom: 40px;
+}
+
+.userList__loader * {
+  margin: 0 auto;
+}

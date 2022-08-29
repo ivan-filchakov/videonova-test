@@ -1,15 +1,13 @@
 .gridOfFour {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 2.667%;
-  /*height: 100%;*/
+  gap: 2.66%;
+  margin-bottom: 80px;
+  position: relative;
 }
 
 .gridOfFour__card {
   flex-basis: 23%;
-  /*height: 100%;*/
-  background: #f19f9f;
   margin-bottom: 20px;
 }
 

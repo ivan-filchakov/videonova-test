@@ -1,7 +1,17 @@
+.homePage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 80px;
+}
+
 .homeBanner {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .homeBanner__heading {
