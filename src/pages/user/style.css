@@ -1,0 +1,12 @@
+.userPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userPage__pic {
+  height: 154px;
+  width: 154px;
+  border-radius: 100%;
+  overflow: hidden;
+}
