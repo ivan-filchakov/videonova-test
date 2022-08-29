@@ -150,7 +150,7 @@ listenRecentVideos.startListening({
       const result = await callRecentVideos()
       listenerApi.dispatch(recentVideosSlice.actions.requestSuccess(result))
     } catch (e) {
-      listenerApi.dispatch(recentVideosSlice.actions.requestError({ e }))
+      listenerApi.dispatch(recentVideosSlice.actions.requestError(e))
     }
   },
 })
