@@ -10,7 +10,7 @@ function UserPage() {
   const params = useParams()
 
   const user = userInfo.find((el) => el.slug === params.id)
-  console.log(user)
+
   return (
     <Layout>
       <div className="userPage">
@@ -20,6 +20,7 @@ function UserPage() {
         <div className="userPage__heading">
           <Heading h={1}>{user.userName}</Heading>
         </div>
+        <div className="userPage__content">page content</div>
       </div>
     </Layout>
   )
