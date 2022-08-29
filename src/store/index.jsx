@@ -114,6 +114,7 @@ const allUsersSlice = createSlice({
     requesting: false,
     requestError: null,
     info: null,
+    videosError: null,
   },
   name: "allUsers",
   reducers: allUsersReducers(),
@@ -128,6 +129,19 @@ listenAllUsers.startListening({
       listenerApi.dispatch(allUsersSlice.actions.requestSuccess(result))
     } catch (e) {
       listenerApi.dispatch(allUsersSlice.actions.requestError({ e }))
+    }
+  },
+})
+
+const getUsersVideos = createListenerMiddleware()
+getUsersVideos.startListening({
+  actionCreator: allUsersSlice.actions.requestSuccess,
+  effect: async (action, listenerApi) => {
+    try {
+      const result = await callRecentVideos()
+      listenerApi.dispatch(allUsersSlice.actions.getUsersVideos(result))
+    } catch (e) {
+      listenerApi.dispatch(allUsersSlice.actions.getUsersVideosError({ e }))
     }
   },
 })
@@ -168,6 +182,7 @@ export const store = configureStore({
       userAuth.middleware,
       listenAllUsers.middleware,
       listenRecentVideos.middleware,
+      getUsersVideos.middleware,
     ]),
 })
 export const { authorize } = userSlice.actions

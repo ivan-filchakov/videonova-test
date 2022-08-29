@@ -1,9 +1,8 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Heading, Icon, Loader } from "../../primitives"
 import GridOfFour from "../gridOfFour"
-import { Heading, Icon } from "../../primitives"
 import UserCard from "../userCard"
-import Loader from "../../primitives/loader"
 import "./style.css"
 import "./style.media.css"
 
@@ -15,19 +14,22 @@ function UsersList() {
   }, [])
 
   function renderUsersList() {
-    return users.info.map((el) => (
-      <UserCard
-        image={el.userPic}
-        buttonClick={`/user/${el.slug}`}
-        buttonLabel="To profile"
-        likesLabel="likes"
-        name={el.userName}
-        videosLabel="videos"
-        likesCount={el.likes || 0}
-        videosCount={el.videos || 0}
-        key={el.id}
-      />
-    ))
+    return users.info.map((el) => {
+      const count = (obj) => (obj ? obj.length : 0)
+      return (
+        <UserCard
+          image={el.userPic}
+          name={el.userName}
+          buttonClick={`/user/${el.slug}`}
+          buttonLabel="To profile"
+          likesCount={count(el.likes)}
+          likesLabel="likes"
+          videosCount={count(el.video)}
+          videosLabel="videos"
+          key={el.id}
+        />
+      )
+    })
   }
 
   const showLoader = users.requesting && !users.info
