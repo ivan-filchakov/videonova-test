@@ -1,0 +1,16 @@
+.loader {
+  display: flex;
+  align-self: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 9px solid #E6E8FF;
+  border-right-color: #5B4DFF;
+  animation: spinner .5s infinite linear;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(1turn);
+  }
+}
