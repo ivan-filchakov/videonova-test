@@ -54,7 +54,6 @@ function FormSign() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const saveResponse = (el) => {
-    console.log(el)
     if (el.type === "notfound" || "exists") {
       showWarning(-1, el.message)
       dispatch({
@@ -71,7 +70,7 @@ function FormSign() {
         type: "modal/toggle",
         payload: false,
       })
-      navigate(`/user/${el.userName}`)
+      navigate(`/user/${el.slug}`)
     }
   }
 
