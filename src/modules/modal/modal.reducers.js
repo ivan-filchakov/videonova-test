@@ -9,5 +9,8 @@ export default function modalReducers() {
       state.isOpen = true
       state.content = action.payload
     },
+    close(state) {
+      state.isOpen = false
+    },
   }
 }

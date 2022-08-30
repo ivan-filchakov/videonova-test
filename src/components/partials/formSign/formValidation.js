@@ -31,8 +31,6 @@ export default function validateForm(state) {
   const validRepeat = validateRepeat(password, passwordRepeat)
 
   if (registered && validLogin + validPassword === 2) return true
-
   if (validLogin + validPassword + validRepeat === 3) return true
-
   return [validLogin[1], validPassword[1], validRepeat[1]].join("")[0]
 }

@@ -26,7 +26,7 @@ const siteInfoSlice = createSlice({
           label: "Sign In",
         },
       },
-      warningMessage: [
+      errorLabel: [
         "Unknown error",
         "Incorrect login - no 2 spaces in a row",
         "Incorrect symbols used in login",

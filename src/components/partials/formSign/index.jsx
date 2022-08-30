@@ -2,123 +2,60 @@ import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { Button, Heading, Text } from "../../primitives"
-import { useSignFormInfo } from "./useStore"
+import { useSiteInfo, useUserInfo } from "./useStore"
 import FormSignIn from "./formSignIn"
 import FormSignUp from "./formSIgnUp"
 import validateForm from "./formValidation"
 import "./style.css"
 
 function FormSign() {
-  const { signInInfo, signUpInfo, warningMessage, inputLabels } =
-    useSignFormInfo()
+  const { signInInfo, signUpInfo, errorLabel, inputLabels } = useSiteInfo()
+  const { requesting, authorized, authError, info } = useUserInfo()
 
   const [formState, setFormState] = useState({
-    requesting: false,
     registered: false,
-    warning: false,
+    error: false,
   })
   const getFormState = (el) => {
     setFormState({
       ...formState,
-      login: el.login,
-      password: el.password,
-      passwordRepeat: el.passwordRepeat,
-    })
-  }
-  const showWarning = (id, message) => {
-    setFormState({
-      ...formState,
-      warning: true,
-      message: warningMessage[id] || message,
-    })
-  }
-  const findErrors = (form) => {
-    const result = validateForm(form)
-    if (typeof result === "string") {
-      showWarning(result)
-      return true
-    }
-    return false
-  }
-  const toggleRequesting = (val) => {
-    setFormState({
-      ...formState,
-      requesting: val,
+      ...el,
     })
   }
 
-  const [response, setResponse] = useState()
+  const showError = (id, message) => {
+    setFormState({
+      ...formState,
+      error: true,
+      errorMessage: errorLabel[id] || message,
+    })
+  }
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const saveResponse = (el) => {
-    if (el.type === "notfound" || "exists") {
-      showWarning(-1, el.message)
-      dispatch({
-        type: "user/authError",
-        payload: el.message,
-      })
+  useEffect(() => {
+    if (authorized) {
+      dispatch({ type: "modal/close" })
+      navigate(`/user/${info.slug}`)
     }
-    if (el.authToken) {
-      dispatch({
-        type: "user/authSuccess",
-        payload: el,
-      })
-      dispatch({
-        type: "modal/toggle",
-        payload: false,
-      })
-      navigate(`/user/${el.slug}`)
-    }
-  }
+  }, [authorized])
 
   useEffect(() => {
-    if (response) saveResponse(response)
-  }, [response])
+    if (authError) showError(-1, authError.message)
+  }, [authError])
 
-  function submitSignUp() {
-    toggleRequesting(true)
-    fetch("https://wonderful-app-lmk4d.cloud.serverless.com/register", {
-      method: "POST",
-      body: JSON.stringify({
-        username: formState.login,
-        password: formState.password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+  const doShit = (form) => {
+    const err = validateForm(form)
+    if (errorLabel[err]) showError(err)
+    dispatch({
+      type: "user2/authorize",
+      payload: {
+        registered: form.registered,
+        username: form.login,
+        password: form.password,
       },
     })
-      .then((res) => res.json())
-      .then((res) => setResponse(res))
-      .then(() => toggleRequesting(false))
   }
-
-  function submitSignIn() {
-    toggleRequesting(true)
-    fetch("https://wonderful-app-lmk4d.cloud.serverless.com/auth", {
-      method: "POST",
-      body: JSON.stringify({
-        username: formState.login,
-        password: formState.password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => setResponse(res))
-      .then(() => toggleRequesting(false))
-  }
-
-  async function submitForm() {
-    const error = await findErrors(formState)
-    const submit = formState.registered ? submitSignIn : submitSignUp
-    if (!error) submit()
-  }
-
-  // -------------------------------------------------------
-  // -------------------------------------------------------
 
   const formInfo = formState.registered ? signInInfo : signUpInfo
   const Form = formState.registered ? FormSignIn : FormSignUp
@@ -126,7 +63,7 @@ function FormSign() {
     setFormState({
       ...formState,
       registered: !formState.registered,
-      warning: false,
+      error: false,
     })
   }
 
@@ -141,8 +78,8 @@ function FormSign() {
         <Form
           popUpLabel={formInfo.popUpLabel}
           inputLabels={inputLabels}
-          warning={formState.warning}
-          warningMessage={formState.message}
+          error={formState.error}
+          errorMessage={formState.errorMessage}
           getFormState={getFormState}
           loginValue={formState.login}
         />
@@ -150,15 +87,9 @@ function FormSign() {
       <div className="formSign__button">
         <Button
           label={formInfo.buttonLabel}
-          onClick={() => submitForm()}
+          onClick={() => doShit(formState)}
           variant="main"
-          loading={formState.requesting}
-        />
-        <Button
-          label={formInfo.buttonLabel}
-          onClick={() => ""}
-          variant="transparent"
-          loading={formState.requesting}
+          loading={requesting}
         />
       </div>
       <div className="formSign__footer">

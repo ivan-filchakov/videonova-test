@@ -7,7 +7,7 @@ import "./style.css"
 
 function HomePage() {
   const homePageInfo = useSelector((store) => store.siteInfo.homePageInfo)
-  const userState = useSelector(({ user }) => user)
+  const userState = useSelector(({ user2 }) => user2)
 
   const dispatch = useDispatch()
   const showSignForm = () => {

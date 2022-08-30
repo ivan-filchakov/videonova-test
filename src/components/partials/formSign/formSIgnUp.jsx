@@ -3,15 +3,13 @@ import PropTypes from "prop-types"
 import { InputText, Text } from "../../primitives"
 
 function FormSignUp({
-  warning,
-  warningMessage,
+  error,
+  errorMessage,
   getFormState,
   loginValue,
   inputLabels,
 }) {
-  const [formState, setFormState] = useState({
-    login: loginValue,
-  })
+  const [formState, setFormState] = useState({ login: loginValue })
   const getLogin = (el) => {
     setFormState({
       ...formState,
@@ -36,10 +34,10 @@ function FormSignUp({
 
   return (
     <div className="formInputs">
-      {warning && (
+      {error && (
         <div className="formInputs__warning">
           <div className="formWarning">
-            <Text color="#000000">{warningMessage}</Text>
+            <Text color="#000000">{errorMessage}</Text>
           </div>
         </div>
       )}
@@ -71,8 +69,8 @@ function FormSignUp({
 
 export default FormSignUp
 FormSignUp.propTypes = {
-  warning: PropTypes.bool.isRequired,
-  warningMessage: PropTypes.string,
+  error: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
   getFormState: PropTypes.func.isRequired,
   loginValue: PropTypes.string,
   inputLabels: PropTypes.shape({
@@ -82,6 +80,6 @@ FormSignUp.propTypes = {
   }).isRequired,
 }
 FormSignUp.defaultProps = {
-  warningMessage: undefined,
+  errorMessage: undefined,
   loginValue: undefined,
 }
