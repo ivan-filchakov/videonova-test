@@ -2,7 +2,7 @@ import { createListenerMiddleware, createSlice } from "@reduxjs/toolkit"
 import userReducers from "./user.reducers"
 import submitSignForm from "./user.actions"
 
-export const userSlice2 = createSlice({
+export const userSlice = createSlice({
   initialState: {
     requesting: false,
     request: null,
@@ -10,19 +10,19 @@ export const userSlice2 = createSlice({
     authError: null,
     info: null,
   },
-  name: "user2",
+  name: "user",
   reducers: userReducers(),
 })
 
-export const userAuth2 = createListenerMiddleware()
-userAuth2.startListening({
-  actionCreator: userSlice2.actions.authorize,
+export const userAuth = createListenerMiddleware()
+userAuth.startListening({
+  actionCreator: userSlice.actions.authorize,
   effect: async (action, listenerApi) => {
     try {
       const result = await submitSignForm(action.payload)
-      listenerApi.dispatch(userSlice2.actions.authSuccess(result))
+      listenerApi.dispatch(userSlice.actions.authSuccess(result))
     } catch (e) {
-      listenerApi.dispatch(userSlice2.actions.authError(e))
+      listenerApi.dispatch(userSlice.actions.authError(e))
     }
   },
 })

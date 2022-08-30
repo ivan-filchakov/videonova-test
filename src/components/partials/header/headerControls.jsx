@@ -15,7 +15,7 @@ function HeaderControls() {
   }
   const unauthorize = () => {
     dispatch({
-      type: "user2/unauthorize",
+      type: "user/unauthorize",
     })
     navigate("/")
   }

@@ -6,7 +6,7 @@ function useHeaderInfo() {
 }
 
 function useUserInfo() {
-  const user = useSelector((store) => store.user2)
+  const user = useSelector((store) => store.user)
   return { ...user }
 }
 

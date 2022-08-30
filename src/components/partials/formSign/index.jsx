@@ -48,7 +48,7 @@ function FormSign() {
     const err = validateForm(form)
     if (errorLabel[err]) showError(err)
     dispatch({
-      type: "user2/authorize",
+      type: "user/authorize",
       payload: {
         registered: form.registered,
         username: form.login,
