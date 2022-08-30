@@ -12,9 +12,6 @@ function FormSign() {
   const { signInInfo, signUpInfo, warningMessage, inputLabels } =
     useSignFormInfo()
 
-  // const userState = useSelector(({ user }) => user)
-  // console.log(userState)
-
   const [formState, setFormState] = useState({
     requesting: false,
     registered: false,
@@ -120,6 +117,9 @@ function FormSign() {
     if (!error) submit()
   }
 
+  // -------------------------------------------------------
+  // -------------------------------------------------------
+
   const formInfo = formState.registered ? signInInfo : signUpInfo
   const Form = formState.registered ? FormSignIn : FormSignUp
   const switchForms = () => {
@@ -152,6 +152,12 @@ function FormSign() {
           label={formInfo.buttonLabel}
           onClick={() => submitForm()}
           variant="main"
+          loading={formState.requesting}
+        />
+        <Button
+          label={formInfo.buttonLabel}
+          onClick={() => ""}
+          variant="transparent"
           loading={formState.requesting}
         />
       </div>

@@ -2,8 +2,7 @@ import React from "react"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import PropTypes from "prop-types"
-import { userReducers } from "./reducers"
-
+import userReducers from "./reducers/user.reducers" // !!--
 import siteInfoSlice from "../modules/siteInfo"
 import modalSlice from "../modules/modal"
 import { userSlice2, userAuth2 } from "../modules/user"

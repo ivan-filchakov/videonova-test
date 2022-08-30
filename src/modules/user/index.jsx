@@ -1,9 +1,11 @@
 import { createListenerMiddleware, createSlice } from "@reduxjs/toolkit"
 import userReducers from "./user.reducers"
+import submitSignForm from "./user.actions"
 
 export const userSlice2 = createSlice({
   initialState: {
     requesting: false,
+    request: null,
     authorized: false,
     authError: null,
     info: null,
@@ -12,24 +14,15 @@ export const userSlice2 = createSlice({
   reducers: userReducers(),
 })
 
-async function mockApiCall() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() > 0.5) resolve({ some: "info" })
-      reject(new Error("some error from mock function"))
-    }, 1000)
-  })
-}
-
 export const userAuth2 = createListenerMiddleware()
 userAuth2.startListening({
   actionCreator: userSlice2.actions.authorize,
   effect: async (action, listenerApi) => {
     try {
-      const result = await mockApiCall()
+      const result = await submitSignForm(action.payload)
       listenerApi.dispatch(userSlice2.actions.authSuccess(result))
     } catch (e) {
-      listenerApi.dispatch(userSlice2.actions.authError({ e }))
+      listenerApi.dispatch(userSlice2.actions.authError(e))
     }
   },
 })
