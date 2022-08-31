@@ -1,27 +1,27 @@
 function validateLogin(login) {
-  if (!login) return [false, 6]
+  if (!login) return "noLogin"
   if (login.indexOf("  ") >= 0) {
-    return [false, 1]
+    return "twoSpaces"
   }
   if (/^[a-zA-Z0-9\s]+$/.test(login)) {
     return true
   }
-  return [false, 2]
+  return "loginSymbols"
 }
 
 function validatePassword(pass) {
-  if (!pass) return [false, 7]
+  if (!pass) return "noPassword"
   if (pass.indexOf(" ") >= 0) {
-    return [false, 3]
+    return "passwordSpaces"
   }
   if (/^[a-zA-Z0-9\s]+$/.test(pass)) {
     return true
   }
-  return [false, 4]
+  return "passwordSymbols"
 }
 
 function validateRepeat(pass1, pass2) {
-  return pass1 === pass2 ? true : [false, 5]
+  return pass1 === pass2 ? true : "noMatch"
 }
 
 export default function validateForm(state) {
@@ -30,7 +30,10 @@ export default function validateForm(state) {
   const validPassword = validatePassword(password)
   const validRepeat = validateRepeat(password, passwordRepeat)
 
-  if (registered && validLogin + validPassword === 2) return true
-  if (validLogin + validPassword + validRepeat === 3) return true
-  return [validLogin[1], validPassword[1], validRepeat[1]].join("")[0]
+  if (registered && validLogin + validPassword === 2) return false
+  if (validLogin + validPassword + validRepeat === 3) return false
+
+  return [validLogin, validPassword, validRepeat].find(
+    (el) => typeof el === "string"
+  )
 }
