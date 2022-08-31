@@ -3,13 +3,16 @@ import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Layout from "../../layout"
 import { Heading, Image } from "../../components/primitives"
+import VideosList from "../../components/partials/videosList"
 import "./style.css"
 
 function UserPage() {
-  const userInfo = useSelector(({ allUsers }) => allUsers.info)
   const params = useParams()
-
-  const user = userInfo.find((el) => el.slug === params.id)
+  const user = useSelector((store) => {
+    const allUsers = store.allUsers.info
+    return allUsers.find((el) => el.slug === params.id)
+  })
+  console.log(user)
 
   return (
     <Layout>
@@ -20,7 +23,9 @@ function UserPage() {
         <div className="userPage__heading">
           <Heading h={1}>{user.userName}</Heading>
         </div>
-        <div className="userPage__content">page content</div>
+        <div className="userPage__content">
+          <VideosList />
+        </div>
       </div>
     </Layout>
   )
