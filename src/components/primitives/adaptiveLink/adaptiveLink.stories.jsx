@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
 import AdaptiveLink from "./index"
+import Image from "../image"
 
 export default {
   title: "Primitives/AdaptiveLink",
@@ -25,10 +26,16 @@ Exterrnal.args = {
   action: "http://google.com",
 }
 
-export function Function(args) {
-  return <AdaptiveLink {...args}>Function</AdaptiveLink>
+export function Stretch(args) {
+  return (
+    <div style={{ position: "relative", width: "100px" }}>
+      <AdaptiveLink {...args} />
+      <Image src="https://picsum.photos/100/100/" fit="cover" />
+    </div>
+  )
 }
 
-Function.args = {
-  action: () => alert("function!"), // eslint-disable-line
+Stretch.args = {
+  action: () => alert("click"), // eslint-disable-line
+  stretch: "stretch",
 }
