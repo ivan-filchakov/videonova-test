@@ -14,7 +14,7 @@ function FormSign() {
 
   const [formState, setFormState] = useState({
     registered: false,
-    error: false,
+    showError: false,
   })
   const getFormState = (el) => {
     setFormState({
@@ -22,11 +22,10 @@ function FormSign() {
       ...el,
     })
   }
-
   const showError = (id, message) => {
     setFormState({
       ...formState,
-      error: true,
+      showError: true,
       errorMessage: errorLabel[id] || message,
     })
   }
@@ -44,17 +43,22 @@ function FormSign() {
     if (authError) showError(-1, authError.message)
   }, [authError])
 
-  const doShit = (form) => {
+  useEffect(() => {
+    if (authError) setFormState({ ...formState, showError: false })
+  }, [])
+
+  const submitForm = (form) => {
     const err = validateForm(form)
     if (errorLabel[err]) showError(err)
-    dispatch({
-      type: "user/authorize",
-      payload: {
-        registered: form.registered,
-        username: form.login,
-        password: form.password,
-      },
-    })
+    if (!err)
+      dispatch({
+        type: "user/authorize",
+        payload: {
+          registered: form.registered,
+          username: form.login,
+          password: form.password,
+        },
+      })
   }
 
   const formInfo = formState.registered ? signInInfo : signUpInfo
@@ -63,7 +67,7 @@ function FormSign() {
     setFormState({
       ...formState,
       registered: !formState.registered,
-      error: false,
+      showError: false,
     })
   }
 
@@ -78,7 +82,7 @@ function FormSign() {
         <Form
           popUpLabel={formInfo.popUpLabel}
           inputLabels={inputLabels}
-          error={formState.error}
+          error={formState.showError}
           errorMessage={formState.errorMessage}
           getFormState={getFormState}
           loginValue={formState.login}
@@ -87,7 +91,7 @@ function FormSign() {
       <div className="formSign__button">
         <Button
           label={formInfo.buttonLabel}
-          onClick={() => doShit(formState)}
+          onClick={() => submitForm(formState)}
           variant="main"
           loading={requesting}
         />
