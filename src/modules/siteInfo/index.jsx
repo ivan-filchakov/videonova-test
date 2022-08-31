@@ -27,7 +27,7 @@ const siteInfoSlice = createSlice({
         },
       },
       errorLabel: {
-        unknown: "Unknown error",
+        undefined: "Validation error",
         twoSpaces: "Incorrect login - no 2 spaces in a row",
         loginSymbols: "Incorrect symbols used in login",
         passwordSpaces: "No spaces in the password",
