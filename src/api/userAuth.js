@@ -1,7 +1,7 @@
-function submitSignForm(el) {
-  const apiRequest = `https://wonderful-app-lmk4d.cloud.serverless.com/${
-    el.registered ? "auth" : "register"
-  }`
+import apiURL from "./apiURL"
+
+function callUserAuth(el) {
+  const apiRequest = `${apiURL}${el.registered ? "auth" : "register"}`
   return fetch(apiRequest, {
     method: "POST",
     body: JSON.stringify({
@@ -21,4 +21,4 @@ function submitSignForm(el) {
   })
 }
 
-export default submitSignForm
+export default callUserAuth

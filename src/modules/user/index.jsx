@@ -1,6 +1,6 @@
 import { createListenerMiddleware, createSlice } from "@reduxjs/toolkit"
 import userReducers from "./user.reducers"
-import submitSignForm from "./user.actions"
+import callUserAuth from "../../api/userAuth"
 
 export const userSlice = createSlice({
   initialState: {
@@ -19,7 +19,7 @@ userAuth.startListening({
   actionCreator: userSlice.actions.authorize,
   effect: async (action, listenerApi) => {
     try {
-      const result = await submitSignForm(action.payload)
+      const result = await callUserAuth(action.payload)
       listenerApi.dispatch(userSlice.actions.authSuccess(result))
     } catch (e) {
       listenerApi.dispatch(userSlice.actions.authError(e))

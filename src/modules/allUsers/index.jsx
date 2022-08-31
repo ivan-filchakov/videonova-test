@@ -1,7 +1,7 @@
 import { createListenerMiddleware, createSlice } from "@reduxjs/toolkit"
 import allUsersReducers from "./allUsers.reducers"
-import callAllUsers from "./allUsers.action"
-import callRecentVideos from "./recentVideos.action"
+import callAllUsers from "../../api/allUsers"
+import callRecentVideos from "../../api/recentVideos"
 
 export const allUsersSlice = createSlice({
   initialState: {
