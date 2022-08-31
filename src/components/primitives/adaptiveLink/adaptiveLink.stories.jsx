@@ -12,13 +12,6 @@ export default {
   },
 }
 
-export function Internal(args) {
-  return <AdaptiveLink {...args}>Internal link</AdaptiveLink>
-}
-Internal.args = {
-  action: "/qweqweqwe",
-}
-
 export function Exterrnal(args) {
   return <AdaptiveLink {...args}>External link</AdaptiveLink>
 }
