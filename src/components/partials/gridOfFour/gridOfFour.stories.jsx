@@ -41,6 +41,6 @@ export const Default = Template.bind({})
 Default.args = {}
 
 export function NoChildren(args) {
-  return <GridOfFour />
+  return <GridOfFour {...args} />
 }
 NoChildren.args = {}
