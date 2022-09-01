@@ -7,6 +7,7 @@ import "./style.css"
 import "./style.media.css"
 
 function UsersList() {
+  const info = useSelector(({ siteInfo }) => siteInfo.usersList)
   const users = useSelector(({ allUsers }) => allUsers)
   const dispatch = useDispatch()
   /**
@@ -29,11 +30,11 @@ function UsersList() {
           image={el.userPic}
           name={el.userName}
           buttonClick={`/user/${el.slug}`}
-          buttonLabel="To profile"
+          buttonLabel={info.buttonLabel}
           likesCount={count(el.likes)}
-          likesLabel="likes"
+          likesLabel={info.likesLabel}
           videosCount={count(el.video)}
-          videosLabel="videos"
+          videosLabel={info.videosLabel}
           key={el.id}
         />
       )
@@ -45,7 +46,7 @@ function UsersList() {
     <div className="usersList">
       <div className="usersList__heading">
         <Heading h={2}>
-          Best creators&nbsp;
+          {info.heading}&nbsp;
           <Icon color="#FFA959" size="30px" name="CustomRating" />
         </Heading>
       </div>
