@@ -28,7 +28,7 @@ export function Default(args) {
 }
 Default.args = {
   isOpen: true,
-  onClose: "",
+  onClose: () => alert("close"),
 }
 
 export function ModalWithSignForm(args) {
