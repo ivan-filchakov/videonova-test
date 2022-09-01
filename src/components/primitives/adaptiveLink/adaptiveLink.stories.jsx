@@ -30,5 +30,5 @@ export function Stretch(args) {
 
 Stretch.args = {
   action: () => alert("click"), // eslint-disable-line
-  stretch: "stretch",
+  stretch: true,
 }

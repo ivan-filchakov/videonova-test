@@ -14,13 +14,6 @@ function GridOfFour({ children }) {
       </div>
     )
 
-  if (!children.length)
-    return (
-      <div className="gridOfFour">
-        <div className="gridOfFour__card">{children}</div>
-      </div>
-    )
-
   if (typeof children === "object") {
     const grid = children.map((el) => (
       <div className="gridOfFour__card" key={children.indexOf(el)}>

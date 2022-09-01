@@ -39,7 +39,7 @@ export function ListOfCustomIcons(args) {
             fontSize: "12px",
           }}
         >
-          <div style={{ margin: "0 20px" }}>
+          <div style={{ margin: "0 20px" }} key={args.name}>
             <ExapmleIcon
               key={args.name}
               width={args.size}
