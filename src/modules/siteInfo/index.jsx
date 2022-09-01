@@ -50,8 +50,9 @@ const siteInfoSlice = createSlice({
     },
     userPageInfo: {
       videosList: {
-        heading: "'s Videos",
+        heading: "'s videos",
         buttonLabel: "Add video",
+        isEmpty: "hasn't uploaded any videos yet...",
       },
     },
   },
