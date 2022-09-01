@@ -1,0 +1,52 @@
+.videoCard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.videoCard__video {
+  height: 200px;
+  width: 100%;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.videoCard__video img {
+  transition: .3s ease;
+}
+
+.videoCard__video iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.videoCard__cover {
+  z-index: 2;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  transition: .3s ease;
+}
+
+.videoCard__cover:hover {
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.videoCard__video:hover img {
+  transform: scale(1.1);
+}
+
+.videoCard__heading,
+.videoCard__description {
+  text-align: center;
+}
