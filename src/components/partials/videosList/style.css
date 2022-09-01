@@ -1,0 +1,18 @@
+.videosList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.videosList__heading {
+  flex-grow: 1;
+}
+
+.videosList__controls {
+}
+
+.videosList__content {
+  flex: 2 0 100%;
+}
