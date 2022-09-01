@@ -16,17 +16,30 @@ function VideosList({
   openModalUpload,
 }) {
   const isLoaded = video && userName
+  const listHeading = `${userName}${heading}`
+
+  /**
+   * Empty block with loader while waiting for api response
+   * @type {JSX.Element}
+   */
   const VideosLoader = (
     <div className="videosList__loader">
       <Loader />
     </div>
   )
-  const EmptyList = (
-    <div className="videosList__empty">
-      <Text>{`${userName} ${isEmpty}`}</Text>
-    </div>
-  )
+  /**
+   * Message if no videos uploaded by the user
+   * @type {JSX.Element}
+   */
+  // const EmptyList = (
+  // )
 
+  /**
+   * Creates VideoCard for each element of array
+   * if array is empty (no videos uploaded by user) - creates EmptyList
+   * @param arr {array}
+   * @return {JSX.Element}
+   */
   function getVideosList(arr) {
     if (arr.length > 0) {
       const list = arr.map((el) => (
@@ -39,10 +52,12 @@ function VideosList({
       ))
       return <GridOfFour>{list}</GridOfFour>
     }
-    return EmptyList
+    return (
+      <div className="videosList__empty">
+        <Text>{`${userName} ${isEmpty}`}</Text>
+      </div>
+    )
   }
-
-  const listHeading = `${userName}${heading}`
 
   return (
     <div className="videosList">
@@ -73,6 +88,9 @@ function VideosList({
 
 export default VideosList
 VideosList.propTypes = {
+  /**
+   * Dynamic data determined by global state or parent component
+   */
   video: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string,
@@ -82,11 +100,14 @@ VideosList.propTypes = {
     })
   ),
   userName: PropTypes.string,
+  admin: PropTypes.bool,
+  openModalUpload: PropTypes.func,
+  /**
+   * Static data comes from the store
+   */
   heading: PropTypes.string.isRequired,
   buttonLabel: PropTypes.string.isRequired,
   isEmpty: PropTypes.string.isRequired,
-  admin: PropTypes.bool,
-  openModalUpload: PropTypes.func,
 }
 VideosList.defaultProps = {
   video: undefined,
