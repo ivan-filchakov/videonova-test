@@ -26,7 +26,7 @@ function UserPage() {
   }, [user, authUser])
 
   const loadingBlock = user ? "" : " userPage_gradientBlock"
-  const loadingLine = user ? "" : " gradientLine"
+  const loadingLine = user ? "" : " userPage_gradientLine"
 
   const openModalUpload = () => {
     dispatch({
@@ -43,7 +43,7 @@ function UserPage() {
         </div>
         <div className={`userPage__heading${loadingLine}`}>
           <Heading h={1} loading={!user}>
-            {user && user.userName}
+            {user.userName}
           </Heading>
         </div>
         <div className="userPage__content">

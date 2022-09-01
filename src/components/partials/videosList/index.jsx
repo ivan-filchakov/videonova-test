@@ -50,12 +50,10 @@ function VideosList({
       {isLoaded && (
         <>
           <div className="videosList__heading">
-            {isLoaded && (
-              <Heading h={2}>
-                {listHeading}&nbsp;
-                <Icon color="#000" size="20px" name="CustomVideoFill" />
-              </Heading>
-            )}
+            <Heading h={2}>
+              {listHeading}&nbsp;
+              <Icon color="#000" size="20px" name="CustomVideoFill" />
+            </Heading>
           </div>
           <div className="videosList__controls">
             {admin && (
@@ -66,9 +64,7 @@ function VideosList({
               />
             )}
           </div>
-          <div className="videosList__content">
-            {isLoaded && getVideosList(video)}
-          </div>
+          <div className="videosList__content">{getVideosList(video)}</div>
         </>
       )}
     </div>

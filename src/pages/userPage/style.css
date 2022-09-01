@@ -28,8 +28,7 @@
 }
 
 .userPage_gradientLine {
-  min-height: 16px;
-  min-width: 15%;
+  min-width: 25%;
   border-radius: 14px;
   background: linear-gradient(-45deg, #e5e8ff, #ffffff);
   background-size: 200% 200%;

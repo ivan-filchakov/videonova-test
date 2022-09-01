@@ -33,7 +33,7 @@ Heading.propTypes = {
     PropTypes.string,
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
-  ]).isRequired,
+  ]),
   /**
    * Heading text color
    */
@@ -47,9 +47,13 @@ Heading.propTypes = {
    * Accented word color
    */
   accentColor: PropTypes.string,
+  /**
+   * Creates empty string while content is loading
+   */
   loading: PropTypes.bool,
 }
 Heading.defaultProps = {
+  children: undefined,
   color: "#000000",
   accent: undefined,
   accentColor: "#5B4DFF",
