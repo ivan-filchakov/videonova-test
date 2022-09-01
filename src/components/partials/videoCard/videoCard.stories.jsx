@@ -12,11 +12,13 @@ export default {
 
 function Template(args) {
   return (
-    <div style={{
-      maxWidth: "360px",
-      padding: "20px",
-      border: "1px dashed #ccc",
-    }}>
+    <div
+      style={{
+        maxWidth: "360px",
+        padding: "20px",
+        border: "1px dashed #ccc",
+      }}
+    >
       <VideoCard {...args} />
     </div>
   )
