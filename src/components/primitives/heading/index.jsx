@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import headingHighlight from "./headingHighlight"
 import "./style.css"
 
-function Heading({ h, children, color, accent, accentColor }) {
+function Heading({ h, children, color, accent, accentColor, loading }) {
   const headingClass = `heading heading_h${h}`
   const TagH = `h${h}`
 
@@ -14,7 +14,8 @@ function Heading({ h, children, color, accent, accentColor }) {
 
   return (
     <TagH className={headingClass} style={{ color }}>
-      {content}
+      {loading && <>&nbsp;</>}
+      {!loading && content}
     </TagH>
   )
 }
@@ -46,9 +47,11 @@ Heading.propTypes = {
    * Accented word color
    */
   accentColor: PropTypes.string,
+  loading: PropTypes.bool,
 }
 Heading.defaultProps = {
   color: "#000000",
   accent: undefined,
   accentColor: "#5B4DFF",
+  loading: false,
 }
