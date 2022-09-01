@@ -1,4 +1,5 @@
 .userPage {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,4 +10,13 @@
   width: 154px;
   border-radius: 100%;
   overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.userPage__heading{
+  margin-bottom: 100px;
+}
+
+.userPage__content {
+  width: 100%;
 }

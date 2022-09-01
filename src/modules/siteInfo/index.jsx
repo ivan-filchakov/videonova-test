@@ -48,6 +48,12 @@ const siteInfoSlice = createSlice({
         "Creative videos with a single click. Add subtitles, transcribe and more",
       buttonLabel: "Start Now",
     },
+    userPageInfo: {
+      videosList: {
+        heading: "'s Videos",
+        buttonLabel: "Add video",
+      },
+    },
   },
   name: "siteInfo",
 })

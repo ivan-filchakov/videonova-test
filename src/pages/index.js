@@ -1,5 +1,5 @@
 import HomePage from "./home"
 import NotFoundPage from "./notFound"
-import UserPage from "./user"
+import UserPage from "./userPage"
 
 export { HomePage, NotFoundPage, UserPage }

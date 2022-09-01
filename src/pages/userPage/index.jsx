@@ -12,8 +12,10 @@ function UserPage() {
     const allUsers = store.allUsers.info
     return allUsers.find((el) => el.slug === params.id)
   })
-  console.log(user)
-
+  const pageInfo = useSelector((store) => {
+    console.log(store)
+    return store.siteInfo.userPageInfo
+  })
   return (
     <Layout>
       <div className="userPage">
@@ -24,7 +26,12 @@ function UserPage() {
           <Heading h={1}>{user.userName}</Heading>
         </div>
         <div className="userPage__content">
-          <VideosList />
+          <VideosList
+            video={user.video}
+            userName={user.userName}
+            heading={pageInfo.videosList.heading}
+            buttonLabel={pageInfo.videosList.buttonLabel}
+          />
         </div>
       </div>
     </Layout>
