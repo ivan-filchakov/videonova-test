@@ -63,6 +63,9 @@ function FormSignIn({
 
 export default FormSignIn
 FormSignIn.propTypes = {
+  /**
+   * Dynamic data determined by global state or parent component
+   */
   error: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   getFormState: PropTypes.func.isRequired,
