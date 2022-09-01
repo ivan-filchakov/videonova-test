@@ -49,7 +49,7 @@ function VideoCard({ src, heading, description }) {
               <Icon color="#fff" size="36px" name="CustomPlayVideo" />
             </div>
             <Image
-              src={`https://img.youtube.com/vi/${embedId}/0.jpg`}
+              src={`https://img.youtube.com/vi/${embedId}/mqdefault.jpg`}
               fit="cover"
             />
           </>
