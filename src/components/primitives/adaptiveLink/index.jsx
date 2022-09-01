@@ -67,6 +67,9 @@ AdaptiveLink.propTypes = {
    * Action when link is beign clicked. Can be function or a link (string)
    */
   action: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  /**
+   * Applies position absolute with 100% width/height
+   */
   stretch: PropTypes.bool,
 }
 AdaptiveLink.defaultProps = {
