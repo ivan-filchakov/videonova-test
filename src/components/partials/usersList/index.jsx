@@ -10,7 +10,7 @@ function UsersList() {
   const users = useSelector(({ allUsers }) => allUsers)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch({ type: "allUsers/request" })
+    if (!users.info) dispatch({ type: "allUsers/request" })
   }, [])
 
   function renderUsersList() {
