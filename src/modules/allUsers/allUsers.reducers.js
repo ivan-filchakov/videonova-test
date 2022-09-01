@@ -19,7 +19,6 @@ export default function allUsersReducers() {
       const filterById = (id) => allVideos.filter((el) => el.userId === id)
       state.info.map((user) => {
         user.video = filterById(user.id)
-        if (!user.video.length) delete user.video
         return null
       })
     },
