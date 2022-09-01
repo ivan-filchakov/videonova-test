@@ -15,11 +15,10 @@ function UserCard({
   buttonLabel,
   buttonClick,
 }) {
-  const alt = name.split(" ").join("-").toLowerCase()
   return (
     <div className="userCard">
       <div className="userCard__pic">
-        <Image src={image} alt={alt} fit="cover" />
+        <Image src={image} alt={name} fit="cover" />
       </div>
       <div className="userCard__name">
         <Heading h={3}>{name}</Heading>

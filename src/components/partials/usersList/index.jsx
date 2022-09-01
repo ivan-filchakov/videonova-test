@@ -25,17 +25,17 @@ function UsersList() {
     const UserCards = users.info.map((el) => {
       const count = (obj) => (obj ? obj.length : 0)
       return (
-          <UserCard
-            image={el.userPic}
-            name={el.userName}
-            buttonClick={`/user/${el.slug}`}
-            buttonLabel="To profile"
-            likesCount={count(el.likes)}
-            likesLabel="likes"
-            videosCount={count(el.video)}
-            videosLabel="videos"
-            key={el.id}
-          />
+        <UserCard
+          image={el.userPic}
+          name={el.userName}
+          buttonClick={`/user/${el.slug}`}
+          buttonLabel="To profile"
+          likesCount={count(el.likes)}
+          likesLabel="likes"
+          videosCount={count(el.video)}
+          videosLabel="videos"
+          key={el.id}
+        />
       )
     })
     return <GridOfFour>{UserCards}</GridOfFour>
