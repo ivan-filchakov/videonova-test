@@ -15,4 +15,24 @@
 
 .videosList__content {
   flex: 2 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videosList__loader {
+  width: 100%;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videosList__empty {
+  min-height: 320px;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
 }
