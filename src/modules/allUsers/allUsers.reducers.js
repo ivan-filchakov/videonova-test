@@ -11,7 +11,7 @@ export default function allUsersReducers() {
     },
     requestError(state, action) {
       state.requesting = false
-      state.requestError = action.payload.error.toString()
+      state.requestError = action.payload
       state.info = null
     },
     getUsersVideos(state, action) {
@@ -23,7 +23,7 @@ export default function allUsersReducers() {
       })
     },
     getUsersVideosError(state, action) {
-      state.videosError = action.payload.e.message
+      state.videosError = action.payload
     },
   }
 }
