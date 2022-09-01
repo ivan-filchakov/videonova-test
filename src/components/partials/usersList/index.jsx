@@ -9,30 +9,37 @@ import "./style.media.css"
 function UsersList() {
   const users = useSelector(({ allUsers }) => allUsers)
   const dispatch = useDispatch()
+  /**
+   * Request for users list from api if allUsers.info not found in store
+   */
   useEffect(() => {
     if (!users.info) dispatch({ type: "allUsers/request" })
   }, [])
 
+  const showLoader = users.requesting && !users.info
+  /**
+   * Creates list of UserCard elements
+   * @return {JSX.Element}
+   */
   function renderUsersList() {
-    return users.info.map((el) => {
+    const UserCards = users.info.map((el) => {
       const count = (obj) => (obj ? obj.length : 0)
       return (
-        <UserCard
-          image={el.userPic}
-          name={el.userName}
-          buttonClick={`/user/${el.slug}`}
-          buttonLabel="To profile"
-          likesCount={count(el.likes)}
-          likesLabel="likes"
-          videosCount={count(el.video)}
-          videosLabel="videos"
-          key={el.id}
-        />
+          <UserCard
+            image={el.userPic}
+            name={el.userName}
+            buttonClick={`/user/${el.slug}`}
+            buttonLabel="To profile"
+            likesCount={count(el.likes)}
+            likesLabel="likes"
+            videosCount={count(el.video)}
+            videosLabel="videos"
+            key={el.id}
+          />
       )
     })
+    return <GridOfFour>{UserCards}</GridOfFour>
   }
-
-  const showLoader = users.requesting && !users.info
 
   return (
     <div className="usersList">
@@ -48,9 +55,7 @@ function UsersList() {
         </div>
       )}
       {users.info && (
-        <div className="usersList__content">
-          <GridOfFour>{renderUsersList()}</GridOfFour>
-        </div>
+        <div className="usersList__content">{renderUsersList()}</div>
       )}
     </div>
   )
