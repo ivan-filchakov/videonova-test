@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
@@ -16,17 +15,15 @@ function UserPage() {
   const authUser = useSelector(({ user }) => user)
 
   const [user, setUser] = useState(false)
+  useEffect(() => {
+    if (!users) dispatch({ type: "allUsers/request" })
+    if (users) setUser(users.find((el) => el.slug === routeParams.id))
+  }, [users])
+
   const [admin, setAdmin] = useState(false)
   useEffect(() => {
-    console.log(1)
-    if (!users) dispatch({ type: "allUsers/request" })
-    console.log(2)
-    if (users) setUser(users.find((el) => el.slug === routeParams.id))
-    console.log(3)
-    if (authUser.authorized && authUser.info.id === user.id) {
-      setAdmin(true)
-    }
-  }, [user, authUser.authorized])
+    if (authUser.authorized && authUser.info.id === user.id) setAdmin(true)
+  }, [user, authUser])
 
   const loadingBlock = user ? "" : " userPage_gradientBlock"
   const loadingLine = user ? "" : " gradientLine"
@@ -42,9 +39,7 @@ function UserPage() {
     <Layout>
       <div className="userPage">
         <div className={`userPage__pic${loadingBlock}`}>
-          {user && (
-            <Image src={user.userPic} alt={user.userName} fit="cover" />
-          )}
+          {user && <Image src={user.userPic} alt={user.userName} fit="cover" />}
         </div>
         <div className={`userPage__heading${loadingLine}`}>
           <Heading h={1} loading={!user}>
