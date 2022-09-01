@@ -17,12 +17,12 @@ function AdaptiveLink({ children, action, stretch, ...props }) {
 
   if (typeof action === "function") {
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
       <span
         className={styleMod}
         role="button"
         tabIndex="0"
         onClick={action}
+        onKeyPress={action}
         {...props}
       >
         {children}
