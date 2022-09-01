@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import Header from "../components/partials/header"
 import Footer from "../components/partials/footer"
 import FormSign from "../components/partials/formSign"
-import FormVideoUpload from "../components/partials/formVideoUpload"
+import FormAddVideo from "../components/partials/formAddVideo"
 import Modal from "../components/partials/modal"
 import "./style.css"
 
@@ -12,7 +12,7 @@ function Layout({ children }) {
   const modal = useSelector((store) => store.modal)
   const ModalContentLib = {
     FormSign: <FormSign />,
-    FormVideoUpload: <FormVideoUpload />,
+    FormAddVideo: <FormAddVideo />,
   }
 
   const dispatch = useDispatch()

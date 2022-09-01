@@ -28,10 +28,10 @@ function UserPage() {
   const loadingBlock = user ? "" : " userPage_gradientBlock"
   const loadingLine = user ? "" : " userPage_gradientLine"
 
-  const openModalUpload = () => {
+  const openModal = () => {
     dispatch({
       type: "modal/placeContent",
-      payload: "FormVideoUpload",
+      payload: "FormAddVideo",
     })
   }
 
@@ -54,7 +54,7 @@ function UserPage() {
             buttonLabel={pageInfo.videosList.buttonLabel}
             isEmpty={pageInfo.videosList.isEmpty}
             admin={admin}
-            openModalUpload={openModalUpload}
+            openModal={openModal}
           />
         </div>
       </div>

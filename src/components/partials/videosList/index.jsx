@@ -13,7 +13,7 @@ function VideosList({
   buttonLabel,
   isEmpty,
   admin,
-  openModalUpload,
+  openModal,
 }) {
   const isLoaded = video && userName
   const listHeading = `${userName}${heading}`
@@ -75,7 +75,7 @@ function VideosList({
               <Button
                 label={buttonLabel}
                 variant="main"
-                onClick={() => openModalUpload()}
+                onClick={() => openModal()}
               />
             )}
           </div>
@@ -101,7 +101,7 @@ VideosList.propTypes = {
   ),
   userName: PropTypes.string,
   admin: PropTypes.bool,
-  openModalUpload: PropTypes.func,
+  openModal: PropTypes.func,
   /**
    * Static data comes from the store
    */
@@ -113,5 +113,5 @@ VideosList.defaultProps = {
   video: undefined,
   userName: undefined,
   admin: false,
-  openModalUpload: undefined,
+  openModal: undefined,
 }
