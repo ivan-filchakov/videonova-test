@@ -5,7 +5,10 @@ import Loader from "./index"
 export default {
   title: "primitives/Loader",
   component: Loader,
-  argTypes: {},
+  argTypes: {
+    color: { control: "color" },
+    size: {},
+  },
 }
 
 function Template(args) {
