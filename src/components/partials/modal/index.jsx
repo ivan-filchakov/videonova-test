@@ -23,10 +23,16 @@ function Modal({ children, isOpen, onClose }) {
 
 export default Modal
 Modal.propTypes = {
+  /**
+   * Dynamic data determined by global state or parent component
+   */
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
+  /**
+   * Global state, changes through dispatch in ./src/layout component
+   */
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
 }
