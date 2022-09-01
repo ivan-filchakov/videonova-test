@@ -61,6 +61,14 @@ const siteInfoSlice = createSlice({
         isEmpty: "hasn't uploaded any videos yet...",
       },
     },
+    footerInfo: {
+      socials: [
+        { iconName: "CustomTelegram", link: "http://telegram.org" },
+        { iconName: "CustomDiscord", link: "http://discord.gg" },
+        { iconName: "CustomTwitter", link: "http://twitter.com" },
+      ],
+      copyright: "All rights reserved",
+    },
   },
   name: "siteInfo",
 })
