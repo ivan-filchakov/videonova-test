@@ -1,8 +1,4 @@
 .loader {
-  display: flex;
-  align-self: center;
-  width: 56px;
-  height: 56px;
   border-radius: 50%;
   animation: spinner .5s infinite linear;
 }
