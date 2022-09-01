@@ -5,6 +5,12 @@ import { Heading, Icon, Image, Text } from "../../primitives"
 import "./style.css"
 
 function VideoCard({ src, heading, description }) {
+  /**
+   * Proceeds all variations of youtube video links possible
+   * Extracts video id for embed link generating
+   * @param link {string}
+   * @return {string}
+   */
   const getEmbedId = (link) => {
     const id = link.split("/").at(-1)
     const start = id.indexOf("=") + 1
@@ -12,18 +18,26 @@ function VideoCard({ src, heading, description }) {
     return id.slice(start, end)
   }
   const embedId = getEmbedId(src)
-
+  const videoOpts = { playerVars: { autoplay: 1 } }
+  /**
+   * Creates thumbnail based on youtube video id
+   */
   const [state, setState] = useState({
     preview: true,
     video: false,
   })
-
+  /**
+   * Embeds youtube player only after first click on thumbnail
+   */
   const showVideo = () =>
     setState({
       preview: false,
       video: true,
     })
-
+  /**
+   * Removes youtube player on the end
+   * @param event
+   */
   const removeVideo = (event) => {
     if (event.data === 0)
       setState({
@@ -31,8 +45,6 @@ function VideoCard({ src, heading, description }) {
         video: false,
       })
   }
-
-  const videoOpts = { playerVars: { autoplay: 1 } }
 
   return (
     <div className="videoCard">
@@ -74,6 +86,9 @@ function VideoCard({ src, heading, description }) {
 
 export default VideoCard
 VideoCard.propTypes = {
+  /**
+   * Dynamic data determined by global state or parent component
+   */
   src: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
