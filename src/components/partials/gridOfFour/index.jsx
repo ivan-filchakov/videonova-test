@@ -32,6 +32,9 @@ function GridOfFour({ children }) {
 
 export default GridOfFour
 GridOfFour.propTypes = {
+  /**
+   * Dynamic data determined by global state or parent component
+   */
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
