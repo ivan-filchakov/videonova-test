@@ -6,8 +6,6 @@ export default {
   title: "Primitives/Button",
   component: Button,
   argTypes: {
-    label: "Button",
-    onClick: "",
     variant: {
       options: ["main", "transparent", "link"],
       control: { type: "radio" },
