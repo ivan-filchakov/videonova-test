@@ -56,6 +56,6 @@ Heading.defaultProps = {
   children: undefined,
   color: "#000000",
   accent: undefined,
-  accentColor: "#5B4DFF",
+  accentColor: "#FF6363",
   loading: false,
 }
