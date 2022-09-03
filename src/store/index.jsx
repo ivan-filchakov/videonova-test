@@ -10,6 +10,7 @@ import {
   listenAllUsers,
   getUsersVideos,
 } from "../modules/allUsers"
+import { videoSlice, postVideo } from "../modules/video"
 
 export const store = configureStore({
   reducer: {
@@ -17,12 +18,14 @@ export const store = configureStore({
     modal: modalSlice.reducer,
     allUsers: allUsersSlice.reducer,
     user: userSlice.reducer,
+    video: videoSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend([
       listenAllUsers.middleware,
       getUsersVideos.middleware,
       userAuth.middleware,
+      postVideo.middleware,
     ]),
 })
 

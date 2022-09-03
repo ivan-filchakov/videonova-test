@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Button, Heading, InputText, Text } from "../../primitives"
 import findErrors from "./findErrors"
@@ -8,6 +8,8 @@ function FormAddVideo() {
   const { heading, inputLabels, errorLabels, buttonLabels } = useSelector(
     ({ siteInfo }) => siteInfo.addVideoFormInfo
   )
+  const { postError, requesting } = useSelector(({ video }) => video)
+  const userInfo = useSelector((store) => store.user.info)
 
   const dispatch = useDispatch()
   const closeModal = () => dispatch({ type: "modal/close" })
@@ -18,20 +20,38 @@ function FormAddVideo() {
   const getDescription = (el) => {
     setFormState({ ...formState, description: el.value })
   }
-  const showError = (val) =>
+  const showError = (internal, external) =>
     setFormState({
       ...formState,
-      error: val,
-      errorMessage: errorLabels[val],
+      error: true,
+      errorMessage: errorLabels[internal] || external,
     })
   const hideError = () =>
     setFormState({ ...formState, error: null, errorMessage: null })
 
+  useEffect(() => {
+    if (postError) showError(-1, postError.message)
+  }, [postError])
+  useEffect(() => {
+    if (postError) setFormState({ ...formState, showError: false })
+  }, [])
+
   function submitForm(form) {
-    const err = findErrors(form)
-    if (err) showError(err)
-    if (!err) hideError()
-    console.log({ err })
+    const invalid = findErrors(form)
+    if (invalid) showError(invalid)
+    if (!invalid && !postError) {
+      console.log({ form })
+      hideError()
+      dispatch({
+        type: "video/post",
+        payload: {
+          url: form.link,
+          title: form.name,
+          description: form.description,
+          token: userInfo.authToken,
+        },
+      })
+    }
   }
 
   return (
@@ -44,7 +64,7 @@ function FormAddVideo() {
       {formState.error && (
         <div className="formVideoUpload__warning">
           <div className="formWarning">
-            <Text color="#000000">{errorLabels[formState.error]}</Text>
+            <Text color="#000000">{formState.errorMessage}</Text>
           </div>
         </div>
       )}
@@ -71,6 +91,7 @@ function FormAddVideo() {
           label={buttonLabels.submit}
           variant="main"
           onClick={() => submitForm(formState)}
+          loading={requesting}
         />
       </div>
     </div>

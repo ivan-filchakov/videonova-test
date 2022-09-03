@@ -13,8 +13,9 @@ function VideoCard({ src, heading, description }) {
    */
   const getEmbedId = (link) => {
     const id = link.split("/").at(-1)
-    const start = id.indexOf("=") + 1
-    const end = id.indexOf("&") > 0 ? id.indexOf("&") : id.length
+    const vParam = id.indexOf("v=")
+    const start = vParam < 0 ? 0 : vParam + 2
+    const end = id.length
     return id.slice(start, end)
   }
   const embedId = getEmbedId(src)

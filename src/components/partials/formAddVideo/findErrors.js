@@ -18,7 +18,7 @@ export default function findErrors(form) {
 
   if (form.name.length > 40) return "tooLongName"
 
-  if (!/^[a-zA-Z0-9\s]+$/.test(form.name)) return "incorrectSymblos"
+  // if (!/^[a-zA-Z0-9\s]+$/.test(form.name)) return "incorrectSymblos"
 
   if (!form.description) return "noDescription"
 
@@ -26,7 +26,7 @@ export default function findErrors(form) {
 
   if (form.description.length > 120) return "tooLongDescription"
 
-  if (!/^[a-zA-Z0-9\s]+$/.test(form.description)) return "incorrectSymblos"
+  // if (!/^[a-zA-Z0-9\s]+$/.test(form.description)) return "incorrectSymblos"
 
   return false
 }
