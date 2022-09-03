@@ -42,6 +42,29 @@ const siteInfoSlice = createSlice({
         passwordRepeat: "Repeat password",
       },
     },
+    addVideoFormInfo: {
+      heading: "Add New Video",
+      inputLabels: {
+        link: "YouTube link",
+        videoName: "Name of the video",
+        videoDescription: "Description",
+      },
+      errorLabels: {
+        noLink: "Video link can't be empty",
+        linkSpaces: "Dont use spaces in the link form",
+        incorrectLink: "Enter correct link for YouTube video",
+        noName: "Video name can't be empty",
+        twoSpaces: "Dont use two spaces in a row",
+        tooLongName: "Video name can't be longer than 40 characters",
+        incorrectSymblos: "You can only use letters and numbers, no symbols",
+        noDescription: "Description can't be empty",
+        tooLongDescription: "Description can't be longer than 120 characters",
+      },
+      buttonLabels: {
+        cancel: "Cancel",
+        submit: "Submit",
+      },
+    },
     homePageInfo: {
       heading: "Welcome to VideoNova",
       subheading:
