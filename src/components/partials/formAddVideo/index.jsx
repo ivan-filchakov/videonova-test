@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react"
-=======
-import React, { useState } from "react"
->>>>>>> main
 import { useDispatch, useSelector } from "react-redux"
 import { Button, Heading, InputText, Text } from "../../primitives"
 import findErrors from "./findErrors"
@@ -12,11 +8,8 @@ function FormAddVideo() {
   const { heading, inputLabels, errorLabels, buttonLabels } = useSelector(
     ({ siteInfo }) => siteInfo.addVideoFormInfo
   )
-<<<<<<< HEAD
   const { postError, requesting } = useSelector(({ video }) => video)
   const userInfo = useSelector((store) => store.user.info)
-=======
->>>>>>> main
 
   const dispatch = useDispatch()
   const closeModal = () => dispatch({ type: "modal/close" })
@@ -27,24 +20,15 @@ function FormAddVideo() {
   const getDescription = (el) => {
     setFormState({ ...formState, description: el.value })
   }
-<<<<<<< HEAD
   const showError = (internal, external) =>
     setFormState({
       ...formState,
       error: true,
       errorMessage: errorLabels[internal] || external,
-=======
-  const showError = (val) =>
-    setFormState({
-      ...formState,
-      error: val,
-      errorMessage: errorLabels[val],
->>>>>>> main
     })
   const hideError = () =>
     setFormState({ ...formState, error: null, errorMessage: null })
 
-<<<<<<< HEAD
   useEffect(() => {
     if (postError) showError(-1, postError.message)
   }, [postError])
@@ -68,13 +52,6 @@ function FormAddVideo() {
         },
       })
     }
-=======
-  function submitForm(form) {
-    const err = findErrors(form)
-    if (err) showError(err)
-    if (!err) hideError()
-    console.log({ err })
->>>>>>> main
   }
 
   return (
@@ -87,11 +64,7 @@ function FormAddVideo() {
       {formState.error && (
         <div className="formVideoUpload__warning">
           <div className="formWarning">
-<<<<<<< HEAD
             <Text color="#000000">{formState.errorMessage}</Text>
-=======
-            <Text color="#000000">{errorLabels[formState.error]}</Text>
->>>>>>> main
           </div>
         </div>
       )}
@@ -118,10 +91,7 @@ function FormAddVideo() {
           label={buttonLabels.submit}
           variant="main"
           onClick={() => submitForm(formState)}
-<<<<<<< HEAD
           loading={requesting}
-=======
->>>>>>> main
         />
       </div>
     </div>
