@@ -1,0 +1,39 @@
+.formVideoUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.formVideoUpload__warning {
+  width: 100%;
+}
+
+.formWarning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 700;
+  background: #FADCDE;
+}
+
+.formVideoUpload__form {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 28px;
+}
+
+.formVideoUpload__controls {
+  display: flex;
+  gap: 50px;
+}
+
+.formVideoUpload__form textarea {
+  min-height: 52px;
+}
