@@ -1,5 +1,11 @@
 @media screen and (max-width: 768px) {
+  .usersList {
+    justify-content: center;
+    gap: 16px;
+  }
+
   .usersList__heading {
     text-align: center;
+    margin: 0;
   }
 }
