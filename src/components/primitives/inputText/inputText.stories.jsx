@@ -11,11 +11,7 @@ export default {
 }
 
 function Template(args) {
-  return (
-    <div style={{ height: "300px" }}>
-      <InputText {...args} />
-    </div>
-  )
+  return <div><InputText {...args} /></div>
 }
 
 export const Default = Template.bind({})
