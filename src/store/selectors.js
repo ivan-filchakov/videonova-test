@@ -5,7 +5,7 @@ function useAddVideoFormInfo() {
     ({ siteInfo }) => siteInfo.addVideoFormInfo
   )
   const videoSlice = useSelector(({ video }) => video)
-  const userInfo = useUserInfo()
+  const userInfo = useSelector((store) => store.user.info)
   return { ...addVideoFormInfo, ...videoSlice, userInfo }
 }
 
