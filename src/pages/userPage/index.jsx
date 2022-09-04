@@ -28,12 +28,18 @@ function UserPage() {
   const loadingBlock = user ? "" : " userPage_gradientBlock"
   const loadingLine = user ? "" : " userPage_gradientLine"
 
+  const { postSuccess, info } = useSelector(({ video }) => video)
   const openModal = () => {
+    if (postSuccess) dispatch({ type: "video/resetPostSuccess" })
     dispatch({
       type: "modal/placeContent",
       payload: "FormAddVideo",
     })
   }
+
+  useEffect(() => {
+    if (info) dispatch({ type: "allUsers/request" })
+  }, [info])
 
   return (
     <Layout>
