@@ -1,13 +1,14 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import Layout from "../../layout"
 import { Button, Heading, Text } from "../../components/primitives"
 import UsersList from "../../components/partials/usersList"
+import { useSiteInfo, useUserSlice } from "../../store/selectors"
 import "./style.css"
 
 function HomePage() {
-  const homePageInfo = useSelector((store) => store.siteInfo.homePageInfo)
-  const userState = useSelector(({ user }) => user)
+  const { homePageInfo } = useSiteInfo()
+  const user = useUserSlice()
 
   const dispatch = useDispatch()
   const showSignForm = () => {
@@ -17,8 +18,8 @@ function HomePage() {
     })
   }
 
-  const bannerButton = userState.authorized
-    ? `/user/${userState.info.slug}`
+  const bannerButton = user.authorized
+    ? `/user/${user.info.slug}`
     : showSignForm
 
   return (

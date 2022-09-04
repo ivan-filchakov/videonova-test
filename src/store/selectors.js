@@ -34,6 +34,11 @@ function useUserSlice() {
   return { ...user }
 }
 
+function useVideoSlice() {
+  const videoSlice = useSelector(({ video }) => video)
+  return { ...videoSlice }
+}
+
 export {
   useAddVideoFormInfo,
   useAllUsers,
@@ -41,4 +46,5 @@ export {
   useSiteInfo,
   useUserInfo,
   useUserSlice,
+  useVideoSlice,
 }

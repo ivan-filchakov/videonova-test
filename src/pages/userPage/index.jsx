@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import Layout from "../../layout"
 import { Heading, Image } from "../../components/primitives"
 import VideosList from "../../components/partials/videosList"
+import {
+  useSiteInfo,
+  useAllUsers,
+  useUserSlice,
+  useVideoSlice,
+} from "../../store/selectors"
 import "./style.css"
 
 function UserPage() {
   const routeParams = useParams()
   const dispatch = useDispatch()
 
-  const pageInfo = useSelector((store) => store.siteInfo.userPageInfo)
-  const users = useSelector((store) => store.allUsers.info)
-  const authUser = useSelector(({ user }) => user)
+  const pageInfo = useSiteInfo().userPageInfo
+  const usersInfo = useAllUsers().info
+  const authUser = useUserSlice()
+  console.log({ authUser })
 
   const [user, setUser] = useState(false)
   useEffect(() => {
-    if (!users) dispatch({ type: "allUsers/request" })
-    if (users) setUser(users.find((el) => el.slug === routeParams.id))
-  }, [users])
+    if (!usersInfo) dispatch({ type: "allUsers/request" })
+    if (usersInfo) setUser(usersInfo.find((el) => el.slug === routeParams.id))
+  }, [usersInfo])
 
   const [admin, setAdmin] = useState(false)
   useEffect(() => {
@@ -28,7 +35,7 @@ function UserPage() {
   const loadingBlock = user ? "" : " userPage_gradientBlock"
   const loadingLine = user ? "" : " userPage_gradientLine"
 
-  const { postSuccess, info } = useSelector(({ video }) => video)
+  const { postSuccess, info } = useVideoSlice()
   const openModal = () => {
     if (postSuccess) dispatch({ type: "video/resetPostSuccess" })
     dispatch({
