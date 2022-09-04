@@ -1,9 +1,7 @@
 import apiURL from "./apiURL"
 
 function callPostVideo(el) {
-  console.log(el)
   const apiRequest = `${apiURL}video`
-  console.log(el)
   return fetch(apiRequest, {
     method: "POST",
     body: JSON.stringify({
