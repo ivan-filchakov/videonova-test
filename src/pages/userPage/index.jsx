@@ -19,7 +19,6 @@ function UserPage() {
   const pageInfo = useSiteInfo().userPageInfo
   const usersInfo = useAllUsers().info
   const authUser = useUserSlice()
-  console.log({ authUser })
 
   const [user, setUser] = useState(false)
   useEffect(() => {
