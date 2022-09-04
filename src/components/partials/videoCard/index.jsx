@@ -4,7 +4,7 @@ import YouTube from "react-youtube"
 import { Heading, Icon, Image, Text } from "../../primitives"
 import "./style.css"
 
-function VideoCard({ src, heading, description }) {
+function VideoCard({ src, heading, description, onlyPreview }) {
   /**
    * Proceeds all variations of youtube video links possible
    * Extracts video id for embed link generating
@@ -15,7 +15,7 @@ function VideoCard({ src, heading, description }) {
     const id = link.split("/").at(-1)
     const vParam = id.indexOf("v=")
     const start = vParam < 0 ? 0 : vParam + 2
-    const end = id.length
+    const end = vParam ? start + 11 : id.length
     return id.slice(start, end)
   }
   const embedId = getEmbedId(src)
@@ -30,11 +30,13 @@ function VideoCard({ src, heading, description }) {
   /**
    * Embeds youtube player only after first click on thumbnail
    */
-  const showVideo = () =>
-    setState({
-      preview: false,
-      video: true,
-    })
+  const showVideo = () => {
+    if (!onlyPreview)
+      setState({
+        preview: false,
+        video: true,
+      })
+  }
   /**
    * Removes youtube player on the end
    * @param event
@@ -46,6 +48,8 @@ function VideoCard({ src, heading, description }) {
         video: false,
       })
   }
+
+  const renderPlayer = state.video && onlyPreview
 
   return (
     <div className="videoCard">
@@ -59,7 +63,9 @@ function VideoCard({ src, heading, description }) {
               role="button"
               tabIndex={0}
             >
-              <Icon color="#fff" size="36px" name="CustomPlayVideo" />
+              {!onlyPreview && (
+                <Icon color="#fff" size="36px" name="CustomPlayVideo" />
+              )}
             </div>
             <Image
               src={`https://img.youtube.com/vi/${embedId}/mqdefault.jpg`}
@@ -67,7 +73,7 @@ function VideoCard({ src, heading, description }) {
             />
           </>
         )}
-        {state.video && (
+        {renderPlayer && (
           <YouTube
             videoId={embedId}
             opts={videoOpts}
@@ -92,5 +98,10 @@ VideoCard.propTypes = {
    */
   src: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  onlyPreview: PropTypes.bool,
+}
+VideoCard.defaultProps = {
+  description: undefined,
+  onlyPreview: false,
 }
