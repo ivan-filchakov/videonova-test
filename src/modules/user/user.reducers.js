@@ -25,6 +25,7 @@ export default function userReducers() {
       state.request = null
       state.authorized = false
       state.authError = null
+      localStorage.clear()
     },
   }
 }

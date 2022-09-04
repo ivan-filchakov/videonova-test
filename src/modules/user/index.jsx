@@ -20,7 +20,13 @@ userAuth.startListening({
   effect: async (action, listenerApi) => {
     try {
       const result = await callUserAuth(action.payload)
+      console.log(action.payload)
       listenerApi.dispatch(userSlice.actions.authSuccess(result))
+      const userLocal = {
+        authorized: true,
+        info: result,
+      }
+      localStorage.setItem("userLocal", JSON.stringify(userLocal))
     } catch (e) {
       listenerApi.dispatch(userSlice.actions.authError(e))
     }

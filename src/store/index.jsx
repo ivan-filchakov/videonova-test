@@ -27,6 +27,11 @@ export const store = configureStore({
       userAuth.middleware,
       postVideo.middleware,
     ]),
+  preloadedState: {
+    user: localStorage.getItem("userLocal")
+      ? JSON.parse(localStorage.getItem("userLocal"))
+      : {},
+  },
 })
 
 export function Store(props) {
