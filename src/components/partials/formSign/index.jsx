@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { Button, Heading, Text } from "../../primitives"
-import { useSiteInfo, useUserInfo } from "./useStore"
+import { useSignFormInfo, useUserSlice } from "../../../store/selectors"
 import FormSignIn from "./formSignIn"
 import FormSignUp from "./formSIgnUp"
 import validateForm from "./formValidation"
 import "./style.css"
 
 function FormSign() {
-  const { signInInfo, signUpInfo, errorLabel, inputLabels } = useSiteInfo()
-  const { requesting, authorized, authError, info } = useUserInfo()
+  const { signInInfo, signUpInfo, errorLabel, inputLabels } = useSignFormInfo()
+  const { requesting, authorized, authError, info } = useUserSlice()
 
   const [formState, setFormState] = useState({
     registered: false,

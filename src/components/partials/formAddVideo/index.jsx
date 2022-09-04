@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Button, Heading } from "../../primitives"
 import VideoInputs from "./videoInputs"
 import VideoLoader from "./videoLoader"
 import findErrors from "./findErrors"
+import { useAddVideoFormInfo } from "../../../store/selectors"
 import "./style.css"
 
 function FormAddVideo() {
@@ -14,11 +15,11 @@ function FormAddVideo() {
     buttonLabels,
     loadingLabel,
     successLabel,
-  } = useSelector(({ siteInfo }) => siteInfo.addVideoFormInfo)
-  const { requesting, postSuccess, postError } = useSelector(
-    ({ video }) => video
-  )
-  const userInfo = useSelector((store) => store.user.info)
+    requesting,
+    postSuccess,
+    postError,
+    userInfo,
+  } = useAddVideoFormInfo()
 
   const dispatch = useDispatch()
   const closeModal = () => {
