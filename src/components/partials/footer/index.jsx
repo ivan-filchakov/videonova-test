@@ -1,13 +1,12 @@
 import React from "react"
-import { useSelector } from "react-redux"
+// import { useSelector } from "react-redux"
+import { useSiteInfo } from "../../../store/selectors"
 import { AdaptiveLink, Icon, Text } from "../../primitives"
 import "./style.css"
 import "./style.media.css"
 
 function Footer() {
-  const { copyright, socials } = useSelector(
-    ({ siteInfo }) => siteInfo.footerInfo
-  )
+  const { copyright, socials } = useSiteInfo().footerInfo
   const CopytightInfo = (
     <Text>
       {copyright} {new Date().getFullYear()}

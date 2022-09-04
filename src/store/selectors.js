@@ -1,5 +1,10 @@
 import { useSelector } from "react-redux"
 
+function useSiteInfo() {
+  const siteInfo = useSelector((store) => store.siteInfo)
+  return { ...siteInfo }
+}
+
 function useSignFormInfo() {
   const signFormInfo = useSelector((store) => store.siteInfo.signFormInfo)
   return { ...signFormInfo }
@@ -24,4 +29,10 @@ function useAddVideoFormInfo() {
   return { ...addVideoFormInfo, ...videoSlice, userInfo }
 }
 
-export { useAddVideoFormInfo, useUserSlice, useUserInfo, useSignFormInfo }
+export {
+  useSiteInfo,
+  useAddVideoFormInfo,
+  useUserSlice,
+  useUserInfo,
+  useSignFormInfo,
+}
