@@ -16,12 +16,7 @@ function Layout({ children }) {
   }
 
   const dispatch = useDispatch()
-  const closeModal = () => {
-    dispatch({
-      type: "modal/toggle",
-      payload: false,
-    })
-  }
+  const closeModal = () => dispatch({ type: "modal/close" })
 
   return (
     <div className="layout">
