@@ -1,10 +1,44 @@
 .usersList {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .usersList__heading {
+  flex-grow: 1;
   margin-bottom: 40px;
 }
 
-.userList__loader * {
-  margin: 0 auto;
+.usersList__controls {}
+
+.sortControl {
+  display: flex;
+  gap: 12px;
+}
+
+.sortControl {
+}
+
+.sortControl__button {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 8px;
+  transition: .3s ease;
+}
+
+.sortControl__button:hover {
+  cursor: pointer;
+  background: #E6E8FF;
+}
+
+.userList__loader {
+  flex: 1 0 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usersList__content {
+  flex: 1 0 100%;
 }
