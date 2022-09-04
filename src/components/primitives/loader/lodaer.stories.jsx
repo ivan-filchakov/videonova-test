@@ -15,4 +15,6 @@ function Template(args) {
   return <Loader {...args} />
 }
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  percents: true,
+}
