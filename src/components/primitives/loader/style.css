@@ -1,4 +1,8 @@
 .loader {
+  position: relative;
+}
+
+.loader__spinner {
   border-radius: 50%;
   animation: spinner .5s infinite linear;
 }
@@ -7,4 +11,12 @@
   to {
     transform: rotate(1turn);
   }
+}
+
+.loader__percents {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
 }
