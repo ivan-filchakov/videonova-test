@@ -49,7 +49,7 @@ function VideoCard({ src, heading, description, onlyPreview }) {
       })
   }
 
-  const renderPlayer = state.video && onlyPreview
+  const renderPlayer = state.video && !onlyPreview
 
   return (
     <div className="videoCard">
