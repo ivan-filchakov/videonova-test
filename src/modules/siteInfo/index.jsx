@@ -63,7 +63,10 @@ const siteInfoSlice = createSlice({
       buttonLabels: {
         cancel: "Cancel",
         submit: "Submit",
+        onSuccess: "To Videos",
       },
+      loadingLabel: "Loading...",
+      successLabel: "Successful!",
     },
     homePageInfo: {
       heading: "Welcome to VideoNova",
