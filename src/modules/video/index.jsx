@@ -6,7 +6,7 @@ export const videoSlice = createSlice({
   initialState: {
     requesting: false,
     request: null,
-    postSuccess: null,
+    postSuccess: false,
     postError: null,
     info: null,
   },

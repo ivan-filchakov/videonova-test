@@ -4,7 +4,7 @@ export default function videoReducers() {
     post(state, action) {
       state.requesting = true
       state.request = action.payload
-      state.postSuccess = null
+      state.postSuccess = false
       state.postError = null
     },
     postSuccess(state, action) {
@@ -17,16 +17,12 @@ export default function videoReducers() {
     postError(state, action) {
       state.requesting = false
       state.request = null
-      state.postSuccess = null
+      state.postSuccess = false
       state.postError = action.payload
       state.info = null
     },
     resetPostSuccess(state) {
-      state.requesting = false
-      state.postSuccess = null
-      state.request = null
-      state.postSuccess = null
-      state.postError = null
+      state.postSuccess = false
     },
   }
 }
