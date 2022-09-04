@@ -2,7 +2,7 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { AdaptiveLink, Button, Icon, Image } from "../../primitives"
-import { useHeaderInfo, useUserInfo } from "./useStore"
+import { useUserSlice, useSiteInfo } from "../../../store/selectors"
 
 function HeaderControls() {
   const dispatch = useDispatch()
@@ -20,8 +20,8 @@ function HeaderControls() {
     navigate("/")
   }
 
-  const { headerControls } = useHeaderInfo()
-  const { authorized, info } = useUserInfo()
+  const { headerControls } = useSiteInfo().headerInfo
+  const { authorized, info } = useUserSlice()
 
   return (
     <div className="headerControls">
