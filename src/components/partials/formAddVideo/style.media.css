@@ -1,0 +1,10 @@
+@media screen and (max-width: 768px) {
+  .formVideoUpload__form {
+    margin-bottom: 0;
+  }
+  .formVideoUpload__controls {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

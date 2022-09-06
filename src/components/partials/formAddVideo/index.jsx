@@ -6,6 +6,7 @@ import VideoLoader from "./videoLoader"
 import findErrors from "./findErrors"
 import { useAddVideoFormInfo } from "../../../store/selectors"
 import "./style.css"
+import "./style.media.css"
 
 function FormAddVideo() {
   const {

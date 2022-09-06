@@ -7,6 +7,7 @@ import FormSign from "../components/partials/formSign"
 import FormAddVideo from "../components/partials/formAddVideo"
 import Modal from "../components/partials/modal"
 import "./style.css"
+import "./style.media.css"
 
 function Layout({ children }) {
   const modal = useSelector((store) => store.modal)
