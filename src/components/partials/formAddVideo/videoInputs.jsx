@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react"
+// import React, { useEffect, useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { InputText, Text } from "../../primitives"
 
@@ -13,15 +14,27 @@ function VideoInputs({
   showError,
   errorMessage,
 }) {
-  const [formState, setFormState] = useState({})
-  const getLink = (el) => setFormState({ ...formState, link: el.value })
-  const getName = (el) => setFormState({ ...formState, name: el.value })
-  const getDescription = (el) => {
-    setFormState({ ...formState, description: el.value })
+  // const [formState, setFormState] = useState({})
+  const getLink = (el) => {
+    getFormState({
+      description: valueDescription,
+      name: valueName,
+      link: el.value,
+    })
   }
-  useEffect(() => {
-    if (typeof getFormState === "function") getFormState(formState)
-  }, [formState])
+  const getName = (el) => {
+    getFormState({
+      description: valueDescription,
+      name: el.value,
+      link: valueLink,
+    })
+  }
+  const getDescription = (el) => {
+    getFormState({ description: el.value, name: valueName, link: valueLink })
+  }
+  // useEffect(() => {
+  //   if (typeof getFormState === "function") getFormState(formState)
+  // }, [formState])
   return (
     <>
       {showError && (
