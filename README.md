@@ -6,13 +6,13 @@ https://www.figma.com/file/ZNdHyn6insRi3WwLqSv34Z/VideoNova-%3A%3A-source
 
 # VideoNova project 
 
-####App brief:
+#### App brief:
 Videonova web app allows users to watch and add youtube videos on their pages. Based on `create-react-app` template.
-####Scenarios implemented: 
+#### Scenarios implemented: 
 1. Create user profile
 2. Login into exsisting profile (e.g. log: `test`, pass: `qwer`)
 3. Add new YT video on logged user's page 
-####Project features:
+#### Project features:
 * **React Router** - used for seamless navigation through the app without page reloading;
 * **Global Store (Redux)** - keeps all static and dynamic app info. Uses middleware side effects from `@reduxjs/toolkit` for:
   * proceeding REST API and updating store based on its responses;
