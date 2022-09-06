@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public serve storybook-static",
+    "build-storybook": "build-storybook public serve storybook-static",
     "lint": "eslint ./src",
     "format": "eslint ./src --fix"
   },
