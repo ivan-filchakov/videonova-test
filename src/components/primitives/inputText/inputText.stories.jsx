@@ -11,7 +11,11 @@ export default {
 }
 
 function Template(args) {
-  return <div><InputText {...args} /></div>
+  return (
+    <div>
+      <InputText {...args} />
+    </div>
+  )
 }
 
 export const Default = Template.bind({})
