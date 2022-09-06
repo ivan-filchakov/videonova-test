@@ -1,0 +1,19 @@
+@media screen and (max-width: 768px){
+  .modal {
+    background: lightgoldenrodyellow;
+  }
+  .modal__content {
+    height: 100%;
+    width: 100%;
+    min-width: 100vw;
+    border-radius: 0;
+    padding: 25px 10px;
+  }
+  .modal__bg {
+    display: none;
+  }
+  .modal__close {
+    top: 36px;
+    right: 18px;
+  }
+}

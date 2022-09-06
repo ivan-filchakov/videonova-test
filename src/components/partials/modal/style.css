@@ -14,7 +14,9 @@
 .modal__content {
   position: relative;
   z-index: 201;
+  max-height: 100vh;
   min-width: 644px;
+  overflow: auto;
   box-sizing: border-box;
   padding: 80px;
   background: #ffffff;
