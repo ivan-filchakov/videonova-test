@@ -17,7 +17,7 @@ Videonova web app allows users to watch and add youtube videos on their pages. B
 * **Global Store (Redux)** - keeps all static and dynamic app info. Uses middleware side effects from `@reduxjs/toolkit` for:
   * proceeding REST API and updating store based on its responses;
   * saving data in preloaded state to keep user logged in after page refresh (and clearing it after log out);
-* **Storybook.js** - contains prediscribed reusable react-components, allows to preview and ajust their possible variations;
+* **Storybook.js** - contains prediscribed reusable react-components, allows to preview and ajust their possible variations (deployed at https://storybook.dkyo3mhci8qo7.amplifyapp.com/);
 * **Eslint** and **Prettier** were used to keep code clean, unified and readable (with addons `eslint-config-airbnb` and `eslint-plugin-jsx-a11y` included);
 
 
