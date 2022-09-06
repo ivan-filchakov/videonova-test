@@ -1,3 +1,6 @@
+#### Storybook deployed:
+https://storybook.dkyo3mhci8qo7.amplifyapp.com/
+
 #### App deployed with AWS Amplify: 
 https://main.d2iduzz2hxv18i.amplifyapp.com/
 
